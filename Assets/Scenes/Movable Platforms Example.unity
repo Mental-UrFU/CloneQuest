@@ -706,12 +706,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shouldMove: 1
-  _velocity: {x: 0, y: 1}
-  _movementType: 0
+  _velocity: {x: 0, y: -1}
   _leftBoundX: 0
   _rightBoundX: 0
-  _downBoundY: -1
+  _downBoundY: -2
   _upBoundY: 5
+  _rigidbody: {fileID: 0}
 --- !u!50 &1029435208
 Rigidbody2D:
   serializedVersion: 4
@@ -1046,11 +1046,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shouldMove: 1
   _velocity: {x: 1, y: 0}
-  _movementType: 0
   _leftBoundX: -8
   _rightBoundX: -3
   _downBoundY: 0
   _upBoundY: 0
+  _rigidbody: {fileID: 0}
 --- !u!1 &1825830948
 GameObject:
   m_ObjectHideFlags: 0

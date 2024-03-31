@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using Unity.Mathematics;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -11,35 +13,39 @@ public class MovablePlatform : MonoBehaviour
     [SerializeField] private bool _shouldMove = false;
     [SerializeField] private Vector2 _velocity = Vector2.zero;
     [Header("Move Bounds")]
-    [SerializeField] private PlatformMovementType _movementType;
-
     [SerializeField] private float _leftBoundX = 0f;
     [SerializeField] private float _rightBoundX = 0f;
     [SerializeField] private float _downBoundY = 0f;
     [SerializeField] private float _upBoundY = 0f;
+    [SerializeField] private Rigidbody2D _rigidbody;
 
     private HashSet<Rigidbody2D> _bodies = new HashSet<Rigidbody2D>();
 
-    public enum PlatformMovementType
+    void FixedUpdate()
     {
-        None,
-        Vertical,
-        Horizontal,
-        Diagonal
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position += new Vector3(_velocity.x, _velocity.y) * Time.deltaTime;
-        //if we moved outside the box; just reverse velocity params
-        if (transform.position.x < _leftBoundX || transform.position.x > _rightBoundX)
+        var rb = InvalidateRigidBody();
+        rb.velocity = _velocity;
+        bool snapBodies = false;
+        //if we moved outside the box; just reverse velocity params and snap them inside the bounding box
+        if (rb.position.x < _leftBoundX || rb.position.x > _rightBoundX)
+        {
             _velocity.x = -_velocity.x;
-        if (transform.position.y < _downBoundY || transform.position.y > _upBoundY)
+            rb.position += _velocity * Time.fixedDeltaTime;
+            snapBodies = true;
+        }
+            
+        if (rb.position.y < _downBoundY || rb.position.y > _upBoundY)
+        {
             _velocity.y = -_velocity.y;
+            rb.position += _velocity * Time.fixedDeltaTime;
+            snapBodies = true;
+        }
+        
         foreach (var body in _bodies)
         {
-            body.transform.position += new Vector3(_velocity.x, _velocity.y) * Time.deltaTime;
+            body.velocity += _velocity;
+            if (snapBodies)
+                body.position += _velocity * Time.fixedDeltaTime;
         }
     }
 
@@ -63,5 +69,15 @@ public class MovablePlatform : MonoBehaviour
     {
         var body = collision.gameObject.GetComponent<Rigidbody2D>();
         UnSubscribeObjectOnCollisionMovement(body);
+    }
+
+    private Rigidbody2D InvalidateRigidBody()
+    {
+        if (_rigidbody == null)
+        {
+            _rigidbody = GetComponent<Rigidbody2D>();
+            return _rigidbody;
+        }
+        return _rigidbody;
     }
 }
