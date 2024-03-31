@@ -10,7 +10,7 @@ using Vector3 = UnityEngine.Vector3;
 public class MovablePlatform : MonoBehaviour
 {
     [Header("Move Parameters")]
-    [SerializeField] private bool _shouldMove = false;
+    [SerializeField] private bool _shouldMove = true;
     [SerializeField] private Vector2 _velocity = Vector2.zero;
     [Header("Move Bounds")]
     [SerializeField] private float _leftBoundX = 0f;
@@ -23,6 +23,8 @@ public class MovablePlatform : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!_shouldMove)
+            return;
         var rb = InvalidateRigidBody();
         rb.velocity = _velocity;
         bool snapBodies = false;
