@@ -30,7 +30,10 @@ public class PlayerInput
     {
         OnEnable += _playerActions.Game.Enable;
         OnDisable += _playerActions.Game.Disable;
+        OnDisable+= StopMoving;
     }
+
+    private void StopMoving() { _controllable.Move = 0f; _controllable.Jump = false; }
 
     private void SetState(bool enable)
     {
