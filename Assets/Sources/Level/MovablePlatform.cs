@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Xml.Serialization;
 using Unity.Mathematics;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
@@ -11,42 +12,37 @@ public class MovablePlatform : MonoBehaviour
 {
     [Header("Move Parameters")]
     [SerializeField] private bool _shouldMove = true;
-    [SerializeField] private Vector2 _velocity = Vector2.zero;
+    [SerializeField] private float _speed = 0f;
     [Header("Move Bounds")]
-    [SerializeField] private float _leftBoundX = 0f;
-    [SerializeField] private float _rightBoundX = 0f;
-    [SerializeField] private float _downBoundY = 0f;
-    [SerializeField] private float _upBoundY = 0f;
     [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private Vector2 _point1 = Vector2.zero;
+    [SerializeField] private Vector2 _point2 = Vector2.zero;
+    [SerializeField] private Vector2 _currentPoint = Vector2.zero;
+    [SerializeField] private Rigidbody2D _colliderPrefab;
+    private bool _speedApplied = false;
 
-    private HashSet<Rigidbody2D> _bodies = new HashSet<Rigidbody2D>();
+    private readonly HashSet<Rigidbody2D> _bodies = new HashSet<Rigidbody2D>();
 
     void FixedUpdate()
     {
-        if (!_shouldMove)
-            return; 
-        _rigidbody.velocity = _velocity;
-        bool snapBodies = false;
-        //if we moved outside the box; just reverse velocity params and snap them inside the bounding box
-        if (_rigidbody.position.x < _leftBoundX || _rigidbody.position.x > _rightBoundX)
+        if (!_shouldMove || _speed == 0)
+            return;
+
+        if (!_speedApplied)
         {
-            _velocity.x = -_velocity.x;
-            _rigidbody.position += _velocity * Time.fixedDeltaTime;
-            snapBodies = true;
+            _rigidbody.velocity = (_currentPoint - _rigidbody.position) * _speed;
+            _speedApplied = true;
+        }
+
+        if (Vector2.Distance(_rigidbody.position, _currentPoint) < 0.1)
+        {
+            _currentPoint = _currentPoint == _point1 ? _point2 : _point1;
+            _speedApplied = false;
         }
             
-        if (_rigidbody.position.y < _downBoundY || _rigidbody.position.y > _upBoundY)
-        {
-            _velocity.y = -_velocity.y;
-            _rigidbody.position += _velocity * Time.fixedDeltaTime;
-            snapBodies = true;
-        }
-        
         foreach (var body in _bodies)
         {
-            body.velocity += _velocity;
-            if (snapBodies)
-                body.position += _velocity * Time.fixedDeltaTime;
+            body.velocity += _rigidbody.velocity;
         }
     }
 
@@ -78,6 +74,25 @@ public class MovablePlatform : MonoBehaviour
         {
             _rigidbody = GetComponent<Rigidbody2D>();
         }
-    }
 
+        _currentPoint = _point1;
+    }
+#if UNITY_EDITOR
+        protected void OnDrawGizmos()
+        {
+            if (UnityEditor.Selection.activeGameObject != gameObject) return;
+
+            const float radius = 1f;
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(GetPosition(_point1), radius);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(GetPosition(_point2), radius);
+
+
+            Vector3 GetPosition(Vector2 point)
+            {
+                return (Vector3)(point);
+            }
+        }
+#endif
 }
