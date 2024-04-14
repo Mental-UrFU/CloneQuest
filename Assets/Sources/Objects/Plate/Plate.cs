@@ -20,10 +20,12 @@ public class Plate : MonoBehaviour
         if (_triggers == 0) { OnActivateSet.Invoke(false); }
     }
 
+#if UNITY_EDITOR
     private void OnValidate()
     {
         var colliders = GetComponents<Collider2D>();
         if (colliders.Length > 0 && colliders.Any((collider) => collider.isTrigger)) { return; }
         Debug.LogWarning("At least one collider trigger is required: ", this);
     }
+#endif
 }

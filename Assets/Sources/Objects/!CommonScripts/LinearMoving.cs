@@ -49,8 +49,10 @@ public class LinearMoving : MonoBehaviour
         _pivot = _rigidbody.position;
     }
 
+#if UNITY_EDITOR
     private void OnValidate()
     {
         if (_rigidbody == null) { _rigidbody = GetComponent<Rigidbody2D>(); }
     }
+#endif
 }

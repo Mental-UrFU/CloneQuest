@@ -169,7 +169,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyVelocity() => _rigidbody.velocity = _frameVelocity;
 
-    #region Editor
+#if UNITY_EDITOR
 
     private void OnValidate()
     {
@@ -179,5 +179,5 @@ public class PlayerMovement : MonoBehaviour
         if (!_config) { Debug.Log("Config not attached"); }
     }
 
-    #endregion
+#endif
 }
