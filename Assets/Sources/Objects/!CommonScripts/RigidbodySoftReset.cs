@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class RigidbodySoftReset : MonoBehaviour, ISoftReset
 {
@@ -8,10 +9,11 @@ public class RigidbodySoftReset : MonoBehaviour, ISoftReset
 
     public void SoftReset(float duration)
     {
-        _rigidbody.velocity = Vector2.zero;
-        _rigidbody.angularVelocity = 0f;
-        _rigidbody.position = _initialPosition;
-        _rigidbody.rotation = _initialRotation;
+        _rigidbody.bodyType = RigidbodyType2D.Static;
+        DOTween.Sequence().SetLink(gameObject).SetEase(Ease.InOutCubic)
+            .Append(transform.DOMove(_initialPosition, duration))
+            .Join(transform.DORotate(new(0, 0, _initialRotation), duration))
+            .AppendCallback(() => _rigidbody.bodyType = RigidbodyType2D.Dynamic);
     }
 
     private void Awake()
