@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.InputSystem.InputAction;
 
 public class Bootstrap : MonoBehaviour, ILevelSoftResetStartHandler, ILevelSoftResetEndHandler, ILevelReadyHandler, ILevelStartHandler
 {
@@ -22,9 +22,7 @@ public class Bootstrap : MonoBehaviour, ILevelSoftResetStartHandler, ILevelSoftR
         _input.Game.Clone.started += (ctx) => { _cloneSystem.AddCloneAndRestart(); };
         _input.Game.Restart.started += (ctx) => { ReloadLevel(); };
         _input.Game.Esc.started += (ctx) => { TogglePause(); };
-        _input.Any.Any.started += (ctx) => { EventBus.Invoke<ILevelStartHandler>(obj => obj.OnLevelStart()); };
         _input.Game.Enable();
-        _input.Any.Enable();
 
         EventBus.Invoke<ILevelReadyHandler>(obj => obj.OnLevelReady());
     }
@@ -33,16 +31,19 @@ public class Bootstrap : MonoBehaviour, ILevelSoftResetStartHandler, ILevelSoftR
     {
         Time.timeScale = _pause ? 1f : 0f;
         _pause = !_pause;
+        // TODO Disable inputs
     }
 
     public void OnLevelReady()
     {
-        _input.Any.Enable();
+        _input.Game.Move.actionMap.actionTriggered += OnAnyButtonPressed;
     }
+
+    private void OnAnyButtonPressed(CallbackContext ctx) => EventBus.Invoke<ILevelStartHandler>(obj => obj.OnLevelStart());
 
     public void OnLevelStart()
     {
-        _input.Any.Disable();
+        _input.Game.Move.actionMap.actionTriggered -= OnAnyButtonPressed;
         _cloneSystem.Start();
     }
 

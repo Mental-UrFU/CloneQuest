@@ -20,7 +20,7 @@ public class PlayerInput
 
     private void BindControls()
     {
-        _playerActions.Game.Move.started += (ctx) => _controllable.Move = ctx.ReadValue<float>();
+        _playerActions.Game.Move.performed += (ctx) => _controllable.Move = RoundFloat(ctx.ReadValue<float>());
         _playerActions.Game.Move.canceled += (ctx) => _controllable.Move = 0f;
         _playerActions.Game.Jump.started += (ctx) => _controllable.Jump = true;
         _playerActions.Game.Jump.canceled += (ctx) => _controllable.Jump = false;
@@ -32,6 +32,8 @@ public class PlayerInput
         OnDisable += _playerActions.Game.Disable;
         OnDisable += StopMoving;
     }
+
+    protected float RoundFloat(float value) => MathF.Sign(value) * MathF.Round(MathF.Max(MathF.Abs(value), 0.2f), 1);
 
     private void StopMoving() { _controllable.Move = 0f; _controllable.Jump = false; }
 

@@ -43,7 +43,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Clone"",
@@ -141,6 +141,39 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""GamePad"",
+                    ""id"": ""cbfca6b1-5048-42e2-8800-59ff1710155b"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""6725618e-5444-44ca-9be1-4c3f9e21fad5"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1b307759-1d0b-4d85-a297-b225e7e68b79"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""188d772e-c756-4f80-899f-076dc0c3d1df"",
                     ""path"": ""<Keyboard>/space"",
@@ -175,6 +208,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""cf28e6c0-16b4-4621-8cfa-396064c506ab"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""5d5f2bc5-d96c-4db2-8e99-a4b6b4f07a80"",
                     ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
@@ -186,7 +230,18 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e81defa6-bf41-4f51-a84b-7f2c07eb0596"",
+                    ""id"": ""0d99fef5-4ddc-4ca6-8772-c9bddd452740"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Clone"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23af9cb1-4ff5-49da-ac37-68f2a854900d"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -197,40 +252,23 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""e81defa6-bf41-4f51-a84b-7f2c07eb0596"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""79328f10-eaa3-4463-b9d3-a11b7834a586"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Esc"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Any"",
-            ""id"": ""4d11602e-68e8-4d01-970b-b5de84a1111e"",
-            ""actions"": [
-                {
-                    ""name"": ""Any"",
-                    ""type"": ""Button"",
-                    ""id"": ""17ddd38a-9c3f-4998-b0a9-4fa97bb51bbf"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""f39526a9-0a3c-4a42-9463-188bae04076e"",
-                    ""path"": ""<Keyboard>/anyKey"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Any"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -246,9 +284,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_Game_Clone = m_Game.FindAction("Clone", throwIfNotFound: true);
         m_Game_Restart = m_Game.FindAction("Restart", throwIfNotFound: true);
         m_Game_Esc = m_Game.FindAction("Esc", throwIfNotFound: true);
-        // Any
-        m_Any = asset.FindActionMap("Any", throwIfNotFound: true);
-        m_Any_Any = m_Any.FindAction("Any", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -384,52 +419,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         }
     }
     public GameActions @Game => new GameActions(this);
-
-    // Any
-    private readonly InputActionMap m_Any;
-    private List<IAnyActions> m_AnyActionsCallbackInterfaces = new List<IAnyActions>();
-    private readonly InputAction m_Any_Any;
-    public struct AnyActions
-    {
-        private @PlayerActions m_Wrapper;
-        public AnyActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Any => m_Wrapper.m_Any_Any;
-        public InputActionMap Get() { return m_Wrapper.m_Any; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(AnyActions set) { return set.Get(); }
-        public void AddCallbacks(IAnyActions instance)
-        {
-            if (instance == null || m_Wrapper.m_AnyActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_AnyActionsCallbackInterfaces.Add(instance);
-            @Any.started += instance.OnAny;
-            @Any.performed += instance.OnAny;
-            @Any.canceled += instance.OnAny;
-        }
-
-        private void UnregisterCallbacks(IAnyActions instance)
-        {
-            @Any.started -= instance.OnAny;
-            @Any.performed -= instance.OnAny;
-            @Any.canceled -= instance.OnAny;
-        }
-
-        public void RemoveCallbacks(IAnyActions instance)
-        {
-            if (m_Wrapper.m_AnyActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IAnyActions instance)
-        {
-            foreach (var item in m_Wrapper.m_AnyActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_AnyActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public AnyActions @Any => new AnyActions(this);
     public interface IGameActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -437,9 +426,5 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         void OnClone(InputAction.CallbackContext context);
         void OnRestart(InputAction.CallbackContext context);
         void OnEsc(InputAction.CallbackContext context);
-    }
-    public interface IAnyActions
-    {
-        void OnAny(InputAction.CallbackContext context);
     }
 }

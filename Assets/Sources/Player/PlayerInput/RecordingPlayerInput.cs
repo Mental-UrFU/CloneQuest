@@ -35,7 +35,7 @@ public class RecordingPlayerInput : PlayerInput
     {
         _playerActions.Game.Jump.started += (ctx) => _record.Add(InputRecord.Type.JumpStart, LocalTime);
         _playerActions.Game.Jump.canceled += (ctx) => _record.Add(InputRecord.Type.JumpEnd, LocalTime);
-        _playerActions.Game.Move.started += (ctx) => _record.Add(InputRecord.Type.MovePerform, LocalTime, ctx.ReadValue<float>());
+        _playerActions.Game.Move.performed += (ctx) => _record.Add(InputRecord.Type.MovePerform, LocalTime, RoundFloat(ctx.ReadValue<float>()));
         _playerActions.Game.Move.canceled += (ctx) => _record.Add(InputRecord.Type.MoveEnd, LocalTime);
     }
 

@@ -33,6 +33,7 @@ public class InputReplay
             yield return new WaitForSeconds(item.wait);
             Execute(item);
         }
+        Execute(new(InputRecord.Type.None, 0f));
         _coroutine = null;
     }
 
