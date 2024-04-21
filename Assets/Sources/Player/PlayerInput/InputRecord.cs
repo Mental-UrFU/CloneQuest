@@ -38,9 +38,11 @@ public class InputRecord : IEnumerable<InputRecord.Item>
                     break;
             }
         }
+        yield return new Item(Type.None, 0f);
     }
 
     public void Trim() => _records.TrimExcess();
+    public void Clear() { _records.Clear(); _floatValues.Clear(); }
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 

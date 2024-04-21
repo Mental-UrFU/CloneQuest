@@ -207,6 +207,34 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Any"",
+            ""id"": ""4d11602e-68e8-4d01-970b-b5de84a1111e"",
+            ""actions"": [
+                {
+                    ""name"": ""Any"",
+                    ""type"": ""Button"",
+                    ""id"": ""17ddd38a-9c3f-4998-b0a9-4fa97bb51bbf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f39526a9-0a3c-4a42-9463-188bae04076e"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Any"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -218,6 +246,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_Game_Clone = m_Game.FindAction("Clone", throwIfNotFound: true);
         m_Game_Restart = m_Game.FindAction("Restart", throwIfNotFound: true);
         m_Game_Esc = m_Game.FindAction("Esc", throwIfNotFound: true);
+        // Any
+        m_Any = asset.FindActionMap("Any", throwIfNotFound: true);
+        m_Any_Any = m_Any.FindAction("Any", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -353,6 +384,52 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         }
     }
     public GameActions @Game => new GameActions(this);
+
+    // Any
+    private readonly InputActionMap m_Any;
+    private List<IAnyActions> m_AnyActionsCallbackInterfaces = new List<IAnyActions>();
+    private readonly InputAction m_Any_Any;
+    public struct AnyActions
+    {
+        private @PlayerActions m_Wrapper;
+        public AnyActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Any => m_Wrapper.m_Any_Any;
+        public InputActionMap Get() { return m_Wrapper.m_Any; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(AnyActions set) { return set.Get(); }
+        public void AddCallbacks(IAnyActions instance)
+        {
+            if (instance == null || m_Wrapper.m_AnyActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_AnyActionsCallbackInterfaces.Add(instance);
+            @Any.started += instance.OnAny;
+            @Any.performed += instance.OnAny;
+            @Any.canceled += instance.OnAny;
+        }
+
+        private void UnregisterCallbacks(IAnyActions instance)
+        {
+            @Any.started -= instance.OnAny;
+            @Any.performed -= instance.OnAny;
+            @Any.canceled -= instance.OnAny;
+        }
+
+        public void RemoveCallbacks(IAnyActions instance)
+        {
+            if (m_Wrapper.m_AnyActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IAnyActions instance)
+        {
+            foreach (var item in m_Wrapper.m_AnyActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_AnyActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public AnyActions @Any => new AnyActions(this);
     public interface IGameActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -360,5 +437,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         void OnClone(InputAction.CallbackContext context);
         void OnRestart(InputAction.CallbackContext context);
         void OnEsc(InputAction.CallbackContext context);
+    }
+    public interface IAnyActions
+    {
+        void OnAny(InputAction.CallbackContext context);
     }
 }
