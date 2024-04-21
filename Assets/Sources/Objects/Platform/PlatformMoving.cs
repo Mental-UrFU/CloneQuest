@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(WaypointMoving))]
 [RequireComponent(typeof(WaypointLineRenderer))]
-public class PlatformMoving : MonoBehaviour, IActivatable, ISoftReset
+public class PlatformMoving : MonoBehaviour, IActivatable, ISoftResetHandler
 {
     public bool Active { get => _active; set => ActiveSet(value); }
     public UnityEvent<bool> OnActivateSet;
@@ -31,9 +31,9 @@ public class PlatformMoving : MonoBehaviour, IActivatable, ISoftReset
     private void Start()
     {
         _waypointLineRenderer.SetPoints(_waypointMoving.Pivot, _waypointMoving.Points);
-        EventBus.Subscribe<ISoftReset>(this);
+        EventBus.Subscribe<ISoftResetHandler>(this);
     }
-    private void OnDestroy() { EventBus.Unsubscribe<ISoftReset>(this); }
+    private void OnDestroy() { EventBus.Unsubscribe<ISoftResetHandler>(this); }
 
 #if UNITY_EDITOR
     private void OnValidate()

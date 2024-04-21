@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class RigidbodySoftReset : MonoBehaviour, ISoftReset
+public class RigidbodySoftReset : MonoBehaviour, ISoftResetHandler
 {
     [SerializeField] private Rigidbody2D _rigidbody;
     private Vector2 _initialPosition;
@@ -20,12 +20,12 @@ public class RigidbodySoftReset : MonoBehaviour, ISoftReset
     {
         _initialPosition = _rigidbody.position;
         _initialRotation = _rigidbody.rotation;
-        EventBus.Subscribe<ISoftReset>(this);
+        EventBus.Subscribe<ISoftResetHandler>(this);
     }
 
     private void OnDestroy()
     {
-        EventBus.Unsubscribe<ISoftReset>(this);
+        EventBus.Unsubscribe<ISoftResetHandler>(this);
     }
 
     private void OnValidate()
