@@ -18,6 +18,7 @@ public class TESTLevelMenu : MonoBehaviour
     private void CreateButtons()
     {
         _buttons = _levelIds.Select(id => Instantiate(_buttonTemplate, _container)).ToArray();
+        LevelManager.levelsByName = _levelIds.ToList();
         for (var i = 0; i < _buttons.Length; i++)
         {
             var button = _buttons[i];
@@ -41,8 +42,7 @@ public class TESTLevelMenu : MonoBehaviour
     {
         _levelIds = _levelAssets
             .Select(scene => scene.name)
-            .ToArray();
-        LevelManager.levelsByName = _levelAssets.Select(scene => scene.name).ToList();
+            .ToArray();        
     }
 #endif
 }

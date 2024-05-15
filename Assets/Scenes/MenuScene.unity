@@ -1801,8 +1801,10 @@ MonoBehaviour:
   _buttonTemplate: {fileID: 8664572699334268456, guid: 66fae24fee4dd1f43ae9b5cc752d09fd, type: 3}
   _levelIds:
   - L1
+  - L2
   _levelAssets:
   - {fileID: 102900000, guid: 3df5cffaa1782b542a7ffbd478ac3426, type: 3}
+  - {fileID: 102900000, guid: 0d40df350bfbb714a9d2fe1003b81c08, type: 3}
 --- !u!222 &1176252880
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1956,7 +1958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000002861, y: 0.00000095367}
+  m_AnchoredPosition: {x: 5.8, y: 0}
   m_SizeDelta: {x: 69.7911, y: 65.4205}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1459407530
