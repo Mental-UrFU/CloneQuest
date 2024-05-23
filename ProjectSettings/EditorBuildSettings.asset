@@ -23,6 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Templates/L_ex_night.unity
     guid: 0d40df350bfbb714a9d2fe1003b81c08
+  - enabled: 1
+    path: Assets/Scenes/Levels/L2.unity
+    guid: ccd917feff4bb3942b0e63d3b165f851
+  - enabled: 1
+    path: Assets/Scenes/Levels/L3.unity
+    guid: bd9b62f8c6f574b4aa86b5a6c682c1bc
   - enabled: 0
     path: Assets/Scenes/TestLevelLoad/TESTLevelMenu.unity
     guid: f9c511f34b6679e4181bafe255e92bc1

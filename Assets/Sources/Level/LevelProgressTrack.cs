@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelProgressTrack : MonoBehaviour, IStarCollected
+public class LevelProgressTrack : MonoBehaviour, IStarCollected, ILevelSoftResetStartHandler
 {
     public int StarCount = 0;
     // Start is called before the first frame update
@@ -35,5 +35,10 @@ public class LevelProgressTrack : MonoBehaviour, IStarCollected
     public void OnStarCollected()
     {
         StarCount++;
+    }
+
+    public void OnSoftResetStart(float duration)
+    {
+        StarCount = 0;
     }
 }
