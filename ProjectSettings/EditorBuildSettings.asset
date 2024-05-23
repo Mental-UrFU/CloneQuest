@@ -41,4 +41,46 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/L6.unity
     guid: 743d5be162b34324b864a137ecf9affa
+  - enabled: 1
+    path: Assets/Scenes/Levels/L7.unity
+    guid: 9ca78afa8e4c52940b4cdd6710f6ef62
+  - enabled: 1
+    path: Assets/Scenes/Levels/L8.unity
+    guid: f12b70e87be39834e921c2a85322abb9
+  - enabled: 1
+    path: Assets/Scenes/Levels/L9.unity
+    guid: ff3d1210d52adb249ad022ae41701dc4
+  - enabled: 1
+    path: Assets/Scenes/Levels/L10.unity
+    guid: 5a20c6d220634ee4987c6366833dc21e
+  - enabled: 1
+    path: Assets/Scenes/Levels/L11.unity
+    guid: 140bd6513132af04fb356b895da7a46e
+  - enabled: 1
+    path: Assets/Scenes/Levels/L12.unity
+    guid: 4999da338ca146d44b67bca760c3677a
+  - enabled: 1
+    path: Assets/Scenes/Levels/L13.unity
+    guid: 5daf1839d9bdc3840bcbcb56135baaab
+  - enabled: 1
+    path: Assets/Scenes/Levels/L14.unity
+    guid: 884c7380a5b07044dbd7f197d5288919
+  - enabled: 1
+    path: Assets/Scenes/Levels/L15.unity
+    guid: b68b20a6a69efb3459debc26d4d47f01
+  - enabled: 1
+    path: Assets/Scenes/Levels/L16.unity
+    guid: b08365029d52d7e4f895af5fb499199a
+  - enabled: 1
+    path: Assets/Scenes/Levels/L17.unity
+    guid: 18c476bbf041ffa488ee88a6b48796e6
+  - enabled: 1
+    path: Assets/Scenes/Levels/L18.unity
+    guid: 826e4685a0249b54e814be1d744b2e71
+  - enabled: 1
+    path: Assets/Scenes/Levels/L19.unity
+    guid: 99e8f66205471c845aabb8f98539a745
+  - enabled: 1
+    path: Assets/Scenes/Levels/L20.unity
+    guid: 6e942ee412e9a0244b4a261fc63622af
   m_configObjects: {}
