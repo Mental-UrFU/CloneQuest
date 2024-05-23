@@ -1801,9 +1801,9 @@ MonoBehaviour:
   _buttonTemplate: {fileID: 8664572699334268456, guid: 66fae24fee4dd1f43ae9b5cc752d09fd, type: 3}
   _levelIds:
   - L1
-  - L2
+  - L_ex_night
   _levelAssets:
-  - {fileID: 102900000, guid: 3df5cffaa1782b542a7ffbd478ac3426, type: 3}
+  - {fileID: 102900000, guid: e56b2e924c672bb41a27b228fbb1b80d, type: 3}
   - {fileID: 102900000, guid: 0d40df350bfbb714a9d2fe1003b81c08, type: 3}
 --- !u!222 &1176252880
 CanvasRenderer:

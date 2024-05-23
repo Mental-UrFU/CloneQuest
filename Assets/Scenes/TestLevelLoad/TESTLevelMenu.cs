@@ -21,20 +21,42 @@ public class TESTLevelMenu : MonoBehaviour
         LevelManager.levelsByName = _levelIds.ToList();
         for (var i = 0; i < _buttons.Length; i++)
         {
+            if (!PersistentLevelData.LevelStars.ContainsKey(i))
+            {
+                PersistentLevelData.LevelStars.Add(i, -1);
+            }
             var button = _buttons[i];
             var levelIndex = i;
             button.GetComponentInChildren<TMP_Text>().text = $"{levelIndex + 1}";
-            button.onClick.AddListener(() => LoadLevel(levelIndex));
+            button.GetComponentInChildren<StarcounterSetter>().DisplayStarsCount(PersistentLevelData.LevelStars[levelIndex]);
+            if (PersistentLevelData.LevelStars[levelIndex] == -1 && i != 0)
+            {
+                button.GetComponentInChildren<StarcounterSetter>().DisplayLock();
+            }
+            else
+            {
+                button.onClick.AddListener(() => LoadLevel(levelIndex));
+            }            
         }
     }
 
     private void LoadLevel(int index)
     {
         var context = new LevelContext(index, Array.AsReadOnly(_levelIds), SceneManager.GetActiveScene().name);
+        PersistentLevelData.CurrentLevel = index;
         LevelManager.Load(context);
     }
 
-    private void Awake() => CreateButtons();
+    private void LoadLevelMetadata()
+    {
+
+    }
+
+    private void Awake()
+    {
+        CreateButtons();
+        LoadLevelMetadata();
+    }
 
 #if UNITY_EDITOR
     [SerializeField] SceneAsset[] _levelAssets;

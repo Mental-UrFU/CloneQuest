@@ -24,8 +24,10 @@ public static class LevelManager
         if (levelContext == null)
         {
             SceneLoader.LoadScene("MenuScene");
+            return;
         }
         var nextContext = new LevelContext(levelContext.Index + 1, levelContext.ListIds, levelContext.FromId);
+        PersistentLevelData.CurrentLevel += 1;
         Load(nextContext);
     }
 

@@ -19,19 +19,10 @@ EditorBuildSettings:
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Scenes/Levels/L1.unity
-    guid: 3df5cffaa1782b542a7ffbd478ac3426
-  - enabled: 0
-    path: Assets/Scenes/Levels/L5.unity
-    guid: f0377034c4237cf44b19335cbf3ff40c
+    guid: e56b2e924c672bb41a27b228fbb1b80d
   - enabled: 1
-    path: Assets/Scenes/Levels/L2.unity
+    path: Assets/Scenes/Levels/Templates/L_ex_night.unity
     guid: 0d40df350bfbb714a9d2fe1003b81c08
-  - enabled: 0
-    path: Assets/Scenes/Levels/L3.unity
-    guid: 2a193393bd51db346a0deb5e8df28c1f
-  - enabled: 0
-    path: Assets/Scenes/Levels/L4.unity
-    guid: 17f4e6788e1eca24f9ce0934483c2096
   - enabled: 0
     path: Assets/Scenes/TestLevelLoad/TESTLevelMenu.unity
     guid: f9c511f34b6679e4181bafe255e92bc1

@@ -9,11 +9,27 @@ public class GameCanvasEvents : MonoBehaviour
     private GameObject _pauseScreen;
     [SerializeField]
     private GameObject _levelCompletionScreen;
+    [SerializeField]
+    private LevelProgressTrack _levelProgressTracker;
+    [SerializeField]
+    private StarUIController _starUIController;
 
     public void OnLevelCompletion()
     {
-        if(!_levelCompletionScreen.gameObject.activeInHierarchy)
+        if (!_levelCompletionScreen.gameObject.activeInHierarchy)
+        {
             _levelCompletionScreen.SetActive(true);
+            _starUIController.DisplayStarsCount(_levelProgressTracker.StarCount);
+            PersistentLevelData.LevelStars[PersistentLevelData.CurrentLevel] =
+                PersistentLevelData.LevelStars[PersistentLevelData.CurrentLevel] <
+                _levelProgressTracker.StarCount ?
+                _levelProgressTracker.StarCount :
+                PersistentLevelData.LevelStars[PersistentLevelData.CurrentLevel];
+            PersistentLevelData.LevelStars[PersistentLevelData.CurrentLevel + 1] =
+                PersistentLevelData.LevelStars[PersistentLevelData.CurrentLevel + 1] ==
+                -1 ? 0 :
+                PersistentLevelData.LevelStars[PersistentLevelData.CurrentLevel + 1];
+        }           
     }
 
     public void OnPausePress()

@@ -9,3 +9,4 @@ public interface ILevelSoftResetEndHandler { void OnSoftResetEnd(); }
 
 public interface IPauseToggleHandler { void OnPauseToggled(); }
 
+public interface IStarCollected { void OnStarCollected(); }
