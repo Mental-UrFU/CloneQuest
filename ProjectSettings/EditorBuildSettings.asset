@@ -32,4 +32,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestLevelLoad/TESTLevelMenu.unity
     guid: f9c511f34b6679e4181bafe255e92bc1
+  - enabled: 1
+    path: Assets/Scenes/Levels/L4.unity
+    guid: 000c3686d04b36a43903cadac3edbc4b
+  - enabled: 1
+    path: Assets/Scenes/Levels/L5.unity
+    guid: 41e04e1bc80812747b509dbbbc0c3a8f
+  - enabled: 1
+    path: Assets/Scenes/Levels/L6.unity
+    guid: 743d5be162b34324b864a137ecf9affa
   m_configObjects: {}

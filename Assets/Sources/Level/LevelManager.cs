@@ -41,6 +41,7 @@ public static class LevelManager
         else
         {
             var context = new LevelContext(occurence + 1, Array.AsReadOnly(levelsByName.ToArray()), SceneManager.GetActiveScene().name);
+            PersistentLevelData.CurrentLevel += 1;
             LevelManager.Load(context);
         }
     }
