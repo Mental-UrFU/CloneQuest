@@ -1,10 +1,12 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour, ILevelSoftResetEndHandler
 {
     [SerializeField] private bool _facingRightDefault;
     [SerializeField] private Transform _flipAnchor;
+    [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] Animator _animator;
 
     const string _moveVelocityKey = "Move";
@@ -16,6 +18,15 @@ public class PlayerAnimation : MonoBehaviour, ILevelSoftResetEndHandler
     public void ChangeMoveVelocity(float velocity) => _animator.SetFloat(_moveVelocityKey, MathF.Abs(velocity));
     public void ChangeAirVelocity(float velocity) => _animator.SetFloat(_airVelocityKey, velocity);
     public void ChangeDirection(int direction) => UpdateDirection(direction);
+    public void Kill()
+    {
+        const float time = 1f;
+        _sprite.DOFade(0f, time);
+    }
+    public void Relive(float time)
+    {
+        _sprite.DOFade(1f, time);
+    }
 
     #region rotation
 
