@@ -10,16 +10,21 @@ public class CloneSystem : ILevelSoftResetEndHandler, IBeforeLevelUnloadHandler
     private readonly RecordingPlayerInput _playerInput;
     private readonly GameObject _clonePrefab;
     private readonly Vector2 _initialPosition;
-    private readonly List<(InputReplay input, GameObject gameObject)> _clones = new();
+    private static readonly List<(InputReplay input, GameObject gameObject)> _clones = new();
 
     private InputRecord _newRecord = null;
+    private static int _maxClones = 0;
+    public static int CloneCount { get { return _clones.Count; } }
+    public static int MaxClonesCount { get { return _maxClones; } }
 
-    public CloneSystem(RecordingPlayerInput playerInput, GameObject clonePrefab, Vector2 initialPosition)
+    public CloneSystem(RecordingPlayerInput playerInput, GameObject clonePrefab, Vector2 initialPosition, int maxClones = 4)
     {
         _playerInput = playerInput;
         _clonePrefab = clonePrefab;
         _initialPosition = initialPosition;
         playerInput.Reset();
+        _maxClones = maxClones;
+        _clones.Clear();
         Subscribe();
     }
 
@@ -33,6 +38,8 @@ public class CloneSystem : ILevelSoftResetEndHandler, IBeforeLevelUnloadHandler
 
     public void AddCloneAndRestart()
     {
+        if (_clones.Count >= _maxClones)
+            return;
         if (State != ReadyState.Running) { return; }
         _newRecord = _playerInput.ResetAndReturn();
         Restart();

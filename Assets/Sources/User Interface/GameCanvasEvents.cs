@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class GameCanvasEvents : MonoBehaviour
+public class GameCanvasEvents : MonoBehaviour, ILevelSoftResetEndHandler, ILevelReadyHandler
 {
     [SerializeField]
     private GameObject _pauseScreen;
@@ -11,12 +12,14 @@ public class GameCanvasEvents : MonoBehaviour
     private GameObject _levelCompletionScreen;
     [SerializeField]
     private LevelProgressTrack _levelProgressTracker;
+    [SerializeField]
+    private TextMeshProUGUI _clonesTextCount;
 
     public void OnLevelCompletion()
     {
         if (!_levelCompletionScreen.gameObject.activeInHierarchy)
         {
-            _levelCompletionScreen.SetActive(true);            
+            _levelCompletionScreen.SetActive(true);
             PersistentLevelData.LevelStars[PersistentLevelData.CurrentLevel] =
                 PersistentLevelData.LevelStars[PersistentLevelData.CurrentLevel] <
                 _levelProgressTracker.StarCount ?
@@ -26,11 +29,43 @@ public class GameCanvasEvents : MonoBehaviour
                 PersistentLevelData.LevelStars[PersistentLevelData.CurrentLevel + 1] ==
                 -1 ? 0 :
                 PersistentLevelData.LevelStars[PersistentLevelData.CurrentLevel + 1];
-        }           
+        }
+    }
+
+    void Start()
+    {
+        Subscribe();
+    }
+
+    void OnDestroy()
+    {
+        UnSubscribe();
+    }
+
+    void Subscribe()
+    {
+        EventBus.Subscribe<ILevelReadyHandler>(this);
+        EventBus.Subscribe<ILevelSoftResetEndHandler>(this);
+    }
+
+    void UnSubscribe()
+    {
+        EventBus.Subscribe<ILevelReadyHandler>(this);
+        EventBus.Subscribe<ILevelSoftResetEndHandler>(this);
+    }
+
+    public void OnLevelReady()
+    {
+        _clonesTextCount.text = $"{CloneSystem.CloneCount}/{CloneSystem.MaxClonesCount}";
     }
 
     public void OnPausePress()
     {
         _pauseScreen.SetActive(true);
+    }
+
+    public void OnSoftResetEnd()
+    {
+        _clonesTextCount.text = $"{CloneSystem.CloneCount}/{CloneSystem.MaxClonesCount}";
     }
 }

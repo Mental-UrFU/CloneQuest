@@ -8,11 +8,11 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
     IBeforeLevelUnloadHandler
 {
     [SerializeField] private GameObject _clonePrefab;
-
+    [SerializeField] private int _maxClones;
     private LevelContext _levelContext;
     private CloneSystem _cloneSystem;
     private PlayerActions _input;
-    private bool _pause;
+    private bool _pause;    
 
     public void OnLevelLoad(LevelContext levelContext)
     {
@@ -23,7 +23,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
     private void PrepareLevel()
     {
         var playerControls = FindObjectOfType<PlayerControls>();
-        _cloneSystem = new CloneSystem(new(playerControls), _clonePrefab, playerControls.transform.position);
+        _cloneSystem = new CloneSystem(new(playerControls), _clonePrefab, playerControls.transform.position, _maxClones);
         _input = new PlayerActions();
         _input.Game.Clone.started += (ctx) => { _cloneSystem.AddCloneAndRestart(); };
         _input.Game.Restart.started += (ctx) => { OnLevelRestart(); };

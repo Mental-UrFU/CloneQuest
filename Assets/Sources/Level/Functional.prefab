@@ -669,6 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clonePrefab: {fileID: 8934834484401430384, guid: 7695b877eb1accb46a6d27879f89a2ab, type: 3}
+  _maxClones: 4
 --- !u!114 &8447357677297309075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1285,6 +1286,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6670024761404612874, guid: e687b594fe3445247b33e5ba82f737ea, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -304.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670024761404612874, guid: e687b594fe3445247b33e5ba82f737ea, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 146.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6722880696859260023, guid: e687b594fe3445247b33e5ba82f737ea, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1409,6 +1418,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9064191875056451654, guid: e687b594fe3445247b33e5ba82f737ea, type: 3}
+      propertyPath: _clonesTextCount
+      value: 
+      objectReference: {fileID: 2592607530737059074}
     - target: {fileID: 9064191875056451654, guid: e687b594fe3445247b33e5ba82f737ea, type: 3}
       propertyPath: _levelProgressTracker
       value: 
