@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Day wall shape
   m_EditorClassIdentifier: 
   m_Angles:
-  - m_Start: -188
-    m_End: 172
+  - m_Start: -88
+    m_End: 87
+    m_Order: 0
+    m_Sprites:
+    - {fileID: 21300000, guid: efe90f7610fad2e44a9ae04df558655c, type: 3}
+  - m_Start: -273
+    m_End: -88
     m_Order: 0
     m_Sprites:
     - {fileID: 21300000, guid: 51f9a33d9552fb3459fd0f9cf1dbfe36, type: 3}

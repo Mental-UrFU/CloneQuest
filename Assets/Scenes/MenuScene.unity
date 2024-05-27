@@ -1806,20 +1806,6 @@ MonoBehaviour:
   - L4
   - L5
   - L6
-  - L7
-  - L8
-  - L9
-  - L10
-  - L11
-  - L12
-  - L13
-  - L14
-  - L15
-  - L16
-  - L17
-  - L18
-  - L19
-  - L20
   _levelAssets:
   - {fileID: 102900000, guid: e56b2e924c672bb41a27b228fbb1b80d, type: 3}
   - {fileID: 102900000, guid: ccd917feff4bb3942b0e63d3b165f851, type: 3}
@@ -1827,20 +1813,6 @@ MonoBehaviour:
   - {fileID: 102900000, guid: 000c3686d04b36a43903cadac3edbc4b, type: 3}
   - {fileID: 102900000, guid: 41e04e1bc80812747b509dbbbc0c3a8f, type: 3}
   - {fileID: 102900000, guid: 743d5be162b34324b864a137ecf9affa, type: 3}
-  - {fileID: 102900000, guid: 9ca78afa8e4c52940b4cdd6710f6ef62, type: 3}
-  - {fileID: 102900000, guid: f12b70e87be39834e921c2a85322abb9, type: 3}
-  - {fileID: 102900000, guid: ff3d1210d52adb249ad022ae41701dc4, type: 3}
-  - {fileID: 102900000, guid: 5a20c6d220634ee4987c6366833dc21e, type: 3}
-  - {fileID: 102900000, guid: 140bd6513132af04fb356b895da7a46e, type: 3}
-  - {fileID: 102900000, guid: 4999da338ca146d44b67bca760c3677a, type: 3}
-  - {fileID: 102900000, guid: 5daf1839d9bdc3840bcbcb56135baaab, type: 3}
-  - {fileID: 102900000, guid: 884c7380a5b07044dbd7f197d5288919, type: 3}
-  - {fileID: 102900000, guid: b68b20a6a69efb3459debc26d4d47f01, type: 3}
-  - {fileID: 102900000, guid: b08365029d52d7e4f895af5fb499199a, type: 3}
-  - {fileID: 102900000, guid: 18c476bbf041ffa488ee88a6b48796e6, type: 3}
-  - {fileID: 102900000, guid: 826e4685a0249b54e814be1d744b2e71, type: 3}
-  - {fileID: 102900000, guid: 99e8f66205471c845aabb8f98539a745, type: 3}
-  - {fileID: 102900000, guid: 6e942ee412e9a0244b4a261fc63622af, type: 3}
 --- !u!222 &1176252880
 CanvasRenderer:
   m_ObjectHideFlags: 0

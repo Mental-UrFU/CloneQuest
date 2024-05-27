@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: Night wall shape
   m_EditorClassIdentifier: 
   m_Angles:
-  - m_Start: -188
-    m_End: 172
+  - m_Start: 90
+    m_End: 270
     m_Order: 0
     m_Sprites:
     - {fileID: 21300000, guid: 3c387941d277a6349992b896e85e5305, type: 3}
+  - m_Start: -90
+    m_End: 90
+    m_Order: 0
+    m_Sprites:
+    - {fileID: 21300000, guid: d708fc6c42b5ff047a4a8e48e237943a, type: 3}
   m_FillTexture: {fileID: 0}
   m_CornerSprites:
   - m_CornerType: 0
