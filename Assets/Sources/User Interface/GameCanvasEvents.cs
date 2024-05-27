@@ -11,15 +11,12 @@ public class GameCanvasEvents : MonoBehaviour
     private GameObject _levelCompletionScreen;
     [SerializeField]
     private LevelProgressTrack _levelProgressTracker;
-    [SerializeField]
-    private StarUIController _starUIController;
 
     public void OnLevelCompletion()
     {
         if (!_levelCompletionScreen.gameObject.activeInHierarchy)
         {
-            _levelCompletionScreen.SetActive(true);
-            _starUIController.DisplayStarsCount(_levelProgressTracker.StarCount);
+            _levelCompletionScreen.SetActive(true);            
             PersistentLevelData.LevelStars[PersistentLevelData.CurrentLevel] =
                 PersistentLevelData.LevelStars[PersistentLevelData.CurrentLevel] <
                 _levelProgressTracker.StarCount ?
