@@ -7,9 +7,9 @@ public static class LevelRepository
 {
     private const string KEY = "L";
 
-    public static void Get(LevelContext level, Action<LevelData> callback)
+    public static void Get(string levelId, Action<LevelData> callback)
     {
-        Bridge.storage.Get($"{KEY}{level.Id}", OnStorageGetCompleted);
+        Bridge.storage.Get($"{KEY}{levelId}", OnStorageGetCompleted);
         void OnStorageGetCompleted(bool success, string data)
         {
             if (!success) { throw new Exception("Can't read storage data"); }
@@ -17,9 +17,9 @@ public static class LevelRepository
         }
     }
 
-    public static void Get(IEnumerable<LevelContext> levels, Action<List<LevelData>> OnComplete)
+    public static void Get(IEnumerable<string> levelIds, Action<List<LevelData>> OnComplete)
     {
-        Bridge.storage.Get(levels.Select((level) => $"{KEY}{level.Id}").ToList(), OnStorageGetCompleted);
+        Bridge.storage.Get(levelIds.Select((levelId) => $"{KEY}{levelId}").ToList(), OnStorageGetCompleted);
         void OnStorageGetCompleted(bool success, List<string> data)
         {
             if (!success) { throw new Exception("Can't read storage data"); }
@@ -27,9 +27,9 @@ public static class LevelRepository
         }
     }
 
-    public static void Set(LevelContext level, LevelData levelData, Action OnComplete)
+    public static void Set(string levelId, LevelData levelData, Action OnComplete)
     {
-        Bridge.storage.Set($"{KEY}{level.Id}", LevelData.Serialize(levelData), OnStorageSetCompleted);
+        Bridge.storage.Set($"{KEY}{levelId}", LevelData.Serialize(levelData), OnStorageSetCompleted);
         void OnStorageSetCompleted(bool success)
         {
             if (!success) { throw new Exception("Can't write storage data"); }
