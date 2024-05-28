@@ -21,6 +21,8 @@ public class Block : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(_rb.bodyType == RigidbodyType2D.Static)
+            return;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
         if (hit.collider != null && _rb.bodyType != RigidbodyType2D.Static && hit.collider.attachedRigidbody != null)
         {

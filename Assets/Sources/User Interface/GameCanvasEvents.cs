@@ -32,7 +32,7 @@ public class GameCanvasEvents : MonoBehaviour, ILevelSoftResetEndHandler, ILevel
         }
     }
 
-    void Start()
+    void Awake()
     {
         Subscribe();
     }

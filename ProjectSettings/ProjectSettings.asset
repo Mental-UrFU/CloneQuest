@@ -305,7 +305,7 @@ PlayerSettings:
   m_TemplateCustomTags:
     CHOOSE_LOADING_TYPE: -1
     CONFIGURE_SHADOWS_AROUND_CANVAS: 
-    CONNECT_PLUGIN: YG1.6.2
+    CONNECT_PLUGIN: IGB1.9.2
     CUSTOMIZE_BARS_BACKGROUND: 
     CUSTOMIZE_LOADING_SCREEN_BACKGROUND: 
     CUSTOMIZE_LOGO: display = "none"
@@ -581,7 +581,7 @@ PlayerSettings:
   webGLDebugSymbols: 0
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: PROJECT:Bridge
+  webGLTemplate: PROJECT:AT2.1.0
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 2

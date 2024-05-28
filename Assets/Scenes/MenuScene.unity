@@ -1800,16 +1800,16 @@ MonoBehaviour:
   _container: {fileID: 1694258029}
   _buttonTemplate: {fileID: 8664572699334268456, guid: 66fae24fee4dd1f43ae9b5cc752d09fd, type: 3}
   _levelIds:
-  - L1
-  - L2
-  - L3
-  - L4
-  - L5
-  - L6
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
   _levelAssets:
-  - {fileID: 102900000, guid: e56b2e924c672bb41a27b228fbb1b80d, type: 3}
-  - {fileID: 102900000, guid: ccd917feff4bb3942b0e63d3b165f851, type: 3}
-  - {fileID: 102900000, guid: bd9b62f8c6f574b4aa86b5a6c682c1bc, type: 3}
+  - {fileID: 102900000, guid: e8583f5eebeb5d749b7e068f90883175, type: 3}
+  - {fileID: 102900000, guid: c868d5857b6a3084086bd54296fd1d27, type: 3}
+  - {fileID: 102900000, guid: c86c34fbeef79174eaed1ea4c6d38504, type: 3}
   - {fileID: 102900000, guid: 000c3686d04b36a43903cadac3edbc4b, type: 3}
   - {fileID: 102900000, guid: 41e04e1bc80812747b509dbbbc0c3a8f, type: 3}
   - {fileID: 102900000, guid: 743d5be162b34324b864a137ecf9affa, type: 3}
@@ -2123,8 +2123,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -2484,6 +2484,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1246776732736940098, guid: dedf1d38ae6bce44d85ea44195becca1, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246776732736940098, guid: dedf1d38ae6bce44d85ea44195becca1, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2343691528815397460, guid: dedf1d38ae6bce44d85ea44195becca1, type: 3}
       propertyPath: m_Name
       value: MenuCanvas

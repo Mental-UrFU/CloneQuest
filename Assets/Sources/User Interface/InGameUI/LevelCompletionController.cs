@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 public class LevelCompletionController : MonoBehaviour, ILevelFinishHandler, ILevelLoadHandler, IStarCollected, ILevelSoftResetEndHandler
 {
-    [SerializeField] TextMeshProUGUI _levelText;
-    [SerializeField] List<GameObject> stars;
-    [SerializeField] GameObject levelCompletionScreen;
+    [SerializeField] private TextMeshProUGUI _levelText;
+    [SerializeField] private List<GameObject> stars;
+    [SerializeField] private GameObject levelCompletionScreen;
 
     private LevelContext _levelContext;
     private int _gainedStars = 0;
@@ -20,6 +20,7 @@ public class LevelCompletionController : MonoBehaviour, ILevelFinishHandler, ILe
         if (levelCompletionScreen != null)
         {
             levelCompletionScreen.SetActive(true);
+            
             for (int i = 0; i < Math.Min(stars.Count, _gainedStars); i++)
             {
                 stars[i].SetActive(true);
@@ -30,7 +31,7 @@ public class LevelCompletionController : MonoBehaviour, ILevelFinishHandler, ILe
     public void OnLevelLoad(LevelContext levelContext)
     {
         _levelContext = levelContext;
-        _levelText.text = $"спнбемэ {_levelContext.Id}";
+        _levelText.text = $"спнбемэ {_levelContext.Id}";        
         _gainedStars = 0;
     }
 
@@ -44,7 +45,7 @@ public class LevelCompletionController : MonoBehaviour, ILevelFinishHandler, ILe
         _gainedStars++;
     }
 
-    void Start()
+    void Awake()
     {
         Subscribe();
     }
