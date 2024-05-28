@@ -1653,6 +1653,7 @@ MonoBehaviour:
   _container: {fileID: 1694258029}
   _buttonTemplate: {fileID: 8664572699334268456, guid: 66fae24fee4dd1f43ae9b5cc752d09fd, type: 3}
   _levelIds:
+  - 0
   - 1
   - 2
   - 3
@@ -1660,6 +1661,7 @@ MonoBehaviour:
   - 5
   - 6
   _levelAssets:
+  - {fileID: 102900000, guid: 423d1471e83c7d44c825723e75d266e7, type: 3}
   - {fileID: 102900000, guid: e8583f5eebeb5d749b7e068f90883175, type: 3}
   - {fileID: 102900000, guid: c868d5857b6a3084086bd54296fd1d27, type: 3}
   - {fileID: 102900000, guid: c86c34fbeef79174eaed1ea4c6d38504, type: 3}

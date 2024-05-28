@@ -26,6 +26,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
         _cloneSystem = new CloneSystem(new(playerControls), _clonePrefab, playerControls.transform.position, _maxClones);
         _input = new PlayerActions();
         _input.Game.Clone.started += (ctx) => { _cloneSystem.AddCloneAndRestart(); };
+        _input.Game.Undo.started += (ctx) => { _cloneSystem.Restart(); };
         _input.Game.Restart.started += (ctx) => { OnLevelRestart(); };
         _input.Game.Esc.started += (ctx) => { TogglePause(); };
         _input.Game.Enable();

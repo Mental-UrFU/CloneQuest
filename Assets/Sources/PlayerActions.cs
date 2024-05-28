@@ -55,6 +55,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Undo"",
+                    ""type"": ""Button"",
+                    ""id"": ""0acf1cc3-1e0f-4172-b302-a5487a491d72"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Restart"",
                     ""type"": ""Button"",
                     ""id"": ""53fcad31-c7f7-4d25-9320-f4120234a5b9"",
@@ -271,6 +280,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""Esc"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ea992f3-e860-420d-b663-d37fe35cbad3"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Undo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -282,6 +302,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_Game_Move = m_Game.FindAction("Move", throwIfNotFound: true);
         m_Game_Jump = m_Game.FindAction("Jump", throwIfNotFound: true);
         m_Game_Clone = m_Game.FindAction("Clone", throwIfNotFound: true);
+        m_Game_Undo = m_Game.FindAction("Undo", throwIfNotFound: true);
         m_Game_Restart = m_Game.FindAction("Restart", throwIfNotFound: true);
         m_Game_Esc = m_Game.FindAction("Esc", throwIfNotFound: true);
     }
@@ -348,6 +369,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Game_Move;
     private readonly InputAction m_Game_Jump;
     private readonly InputAction m_Game_Clone;
+    private readonly InputAction m_Game_Undo;
     private readonly InputAction m_Game_Restart;
     private readonly InputAction m_Game_Esc;
     public struct GameActions
@@ -357,6 +379,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Game_Move;
         public InputAction @Jump => m_Wrapper.m_Game_Jump;
         public InputAction @Clone => m_Wrapper.m_Game_Clone;
+        public InputAction @Undo => m_Wrapper.m_Game_Undo;
         public InputAction @Restart => m_Wrapper.m_Game_Restart;
         public InputAction @Esc => m_Wrapper.m_Game_Esc;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
@@ -377,6 +400,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Clone.started += instance.OnClone;
             @Clone.performed += instance.OnClone;
             @Clone.canceled += instance.OnClone;
+            @Undo.started += instance.OnUndo;
+            @Undo.performed += instance.OnUndo;
+            @Undo.canceled += instance.OnUndo;
             @Restart.started += instance.OnRestart;
             @Restart.performed += instance.OnRestart;
             @Restart.canceled += instance.OnRestart;
@@ -396,6 +422,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Clone.started -= instance.OnClone;
             @Clone.performed -= instance.OnClone;
             @Clone.canceled -= instance.OnClone;
+            @Undo.started -= instance.OnUndo;
+            @Undo.performed -= instance.OnUndo;
+            @Undo.canceled -= instance.OnUndo;
             @Restart.started -= instance.OnRestart;
             @Restart.performed -= instance.OnRestart;
             @Restart.canceled -= instance.OnRestart;
@@ -424,6 +453,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnClone(InputAction.CallbackContext context);
+        void OnUndo(InputAction.CallbackContext context);
         void OnRestart(InputAction.CallbackContext context);
         void OnEsc(InputAction.CallbackContext context);
     }

@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Undo",
+                    "type": "Button",
+                    "id": "0acf1cc3-1e0f-4172-b302-a5487a491d72",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Restart",
                     "type": "Button",
                     "id": "53fcad31-c7f7-4d25-9320-f4120234a5b9",
@@ -247,6 +256,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Esc",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3ea992f3-e860-420d-b663-d37fe35cbad3",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Undo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
