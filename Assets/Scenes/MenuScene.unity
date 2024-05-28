@@ -1658,16 +1658,12 @@ MonoBehaviour:
   - 2
   - 3
   - 4
-  - 5
-  - 6
   _levelAssets:
   - {fileID: 102900000, guid: 423d1471e83c7d44c825723e75d266e7, type: 3}
   - {fileID: 102900000, guid: e8583f5eebeb5d749b7e068f90883175, type: 3}
   - {fileID: 102900000, guid: c868d5857b6a3084086bd54296fd1d27, type: 3}
   - {fileID: 102900000, guid: c86c34fbeef79174eaed1ea4c6d38504, type: 3}
-  - {fileID: 102900000, guid: 000c3686d04b36a43903cadac3edbc4b, type: 3}
-  - {fileID: 102900000, guid: 41e04e1bc80812747b509dbbbc0c3a8f, type: 3}
-  - {fileID: 102900000, guid: 743d5be162b34324b864a137ecf9affa, type: 3}
+  - {fileID: 102900000, guid: 49b6975b3eb843c4788db57826d1846c, type: 3}
 --- !u!222 &1176252880
 CanvasRenderer:
   m_ObjectHideFlags: 0

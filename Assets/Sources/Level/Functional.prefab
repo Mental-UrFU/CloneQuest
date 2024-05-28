@@ -309,7 +309,7 @@ RectTransform:
   m_GameObject: {fileID: 4087956867063340395}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8851, y: 0.8851, z: 0.8851}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5774594906292176379}
@@ -318,7 +318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -34, y: -14}
+  m_AnchoredPosition: {x: -8.299988, y: 1}
   m_SizeDelta: {x: 142.9628, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &4236801379200276741
@@ -536,7 +536,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8331b9b4c074b9e4ebcbd718b7fdf4f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e82e3d868dc5411429948d761faf959e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1303,12 +1303,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6670024761404612874, guid: e687b594fe3445247b33e5ba82f737ea, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.84973
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670024761404612874, guid: e687b594fe3445247b33e5ba82f737ea, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.84973
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670024761404612874, guid: e687b594fe3445247b33e5ba82f737ea, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.84973
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670024761404612874, guid: e687b594fe3445247b33e5ba82f737ea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 63
+      value: 46.5
       objectReference: {fileID: 0}
     - target: {fileID: 6670024761404612874, guid: e687b594fe3445247b33e5ba82f737ea, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -64
+      value: -43.4
       objectReference: {fileID: 0}
     - target: {fileID: 6722880696859260023, guid: e687b594fe3445247b33e5ba82f737ea, type: 3}
       propertyPath: m_IsActive

@@ -31,7 +31,7 @@ public class LevelCompletionController : MonoBehaviour, ILevelFinishHandler, ILe
     public void OnLevelLoad(LevelContext levelContext)
     {
         _levelContext = levelContext;
-        _levelText.text = $"спнбемэ {_levelContext.Id}";        
+        _levelText.text = $"спнбемэ {int.Parse(_levelContext.Id) + 1}";        
         _gainedStars = 0;
     }
 
