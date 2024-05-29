@@ -1652,6 +1652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _container: {fileID: 1694258029}
   _buttonTemplate: {fileID: 8664572699334268456, guid: 66fae24fee4dd1f43ae9b5cc752d09fd, type: 3}
+  _unlockAllLevels: 1
   _levelIds:
   - 0
   - 1

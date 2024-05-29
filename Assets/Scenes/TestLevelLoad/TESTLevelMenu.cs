@@ -11,7 +11,9 @@ public class TESTLevelMenu : MonoBehaviour
 {
     [SerializeField] RectTransform _container;
     [SerializeField] Button _buttonTemplate;
+    [SerializeField] bool _unlockAllLevels;
     [HideInInspector][SerializeField] string[] _levelIds;
+
     
     private Button[] _buttons;
 
@@ -29,7 +31,7 @@ public class TESTLevelMenu : MonoBehaviour
             var levelIndex = i;
             button.GetComponentInChildren<TMP_Text>().text = $"{levelIndex + 1}";
             button.GetComponentInChildren<StarcounterSetter>().DisplayStarsCount(PersistentLevelData.LevelStars[levelIndex]);
-            if (PersistentLevelData.LevelStars[levelIndex] == -1 && i != 0)
+            if (PersistentLevelData.LevelStars[levelIndex] == -1 && i != 0 && !_unlockAllLevels)
             {
                 button.GetComponentInChildren<StarcounterSetter>().DisplayLock();
             }
