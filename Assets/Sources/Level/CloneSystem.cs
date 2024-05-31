@@ -32,8 +32,11 @@ public class CloneSystem : ILevelSoftResetEndHandler, IBeforeLevelUnloadHandler
     {
         if (State != ReadyState.Ready) { return; }
         State = ReadyState.Running;
-        _playerInput.Enable = true;
-        _clones.ForEach(clone => clone.input.Start());
+        Coroutines.Run(() =>
+        {
+            _playerInput.Enable = true;
+            _clones.ForEach(clone => clone.input.Start());
+        }, new WaitForFixedUpdate());
     }
 
     public void AddCloneAndRestart()

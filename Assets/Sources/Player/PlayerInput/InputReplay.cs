@@ -23,6 +23,7 @@ public class InputReplay
     {
         if (!IsRunning) { return; }
         Coroutines.Stop(_coroutine);
+        Execute(new(InputRecord.Type.None, 0f));
         _coroutine = null;
     }
 
