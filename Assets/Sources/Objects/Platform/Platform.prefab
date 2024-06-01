@@ -84,10 +84,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
-  m_Size: {x: 5, y: 0.6875}
+  m_DrawMode: 1
+  m_Size: {x: 5, y: 1}
   m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
+  m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
@@ -154,8 +154,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.45882356, g: 1, b: 0.61238873, a: 1}
-      key1: {r: 0.45882356, g: 1, b: 0.6117647, a: 1}
+      key0: {r: 0.5568628, g: 0.4, b: 0.21960784, a: 1}
+      key1: {r: 0.5568628, g: 0.4, b: 0.21960784, a: 1}
       key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 1, g: 1, b: 1, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -254,16 +254,16 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.25, y: 0.03125, z: 0.25, w: 0.03125}
+    border: {x: 0.9375, y: 0.375, z: 0.5625, w: 0.375}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 0.6875}
-    newSize: {x: 5, y: 0.6875}
+    oldSize: {x: 2, y: 1}
+    newSize: {x: 5, y: 1}
     adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
+    drawMode: 1
+    adaptiveTiling: 1
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.6875}
+  m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &8225868426638091766
 MonoBehaviour:
