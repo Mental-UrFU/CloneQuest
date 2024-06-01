@@ -1,5 +1,4 @@
 ﻿#if UNITY_WEBGL
-using System;
 using InstantGamesBridge.Common;
 #if !UNITY_EDITOR
 using System.Runtime.InteropServices;

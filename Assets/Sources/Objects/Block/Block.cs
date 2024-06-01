@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Block : MonoBehaviour
@@ -36,7 +34,7 @@ public class Block : MonoBehaviour
             Vector2 clampVel = _rb.velocity;
             Vector2 platformVelocity = hit.collider.attachedRigidbody.velocity; 
             Vector2 selfSpeed = clampVel - platformVelocity; //Speed component owned only by our object
-            var attachedRbMagnitudeX = MathF.Abs(hit.collider.attachedRigidbody.velocity.x);
+            // var attachedRbMagnitudeX = MathF.Abs(hit.collider.attachedRigidbody.velocity.x);
             //Clamp it
             selfSpeed.x = Mathf.Clamp(selfSpeed.x, -maxSpeed, maxSpeed);
             //Decay it

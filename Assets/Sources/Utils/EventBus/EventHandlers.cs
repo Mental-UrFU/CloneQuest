@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public interface ILevelLoadHandler { void OnLevelLoad(LevelContext levelContext); }
 public interface ILevelReadyHandler { void OnLevelReady(); }
 public interface ILevelStartHandler { void OnLevelStart(); }

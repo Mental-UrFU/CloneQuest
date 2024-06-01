@@ -7,4 +7,5 @@ public class Portal : MonoBehaviour
         if (!other.gameObject.TryGetComponent<LevelFinisher>(out var levelFinisher)) { return; }
         levelFinisher.LevelFinish(transform.position);
     }
+    
 }

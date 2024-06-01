@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Star : MonoBehaviour, ILevelSoftResetEndHandler
@@ -9,13 +7,13 @@ public class Star : MonoBehaviour, ILevelSoftResetEndHandler
 
     public void OnSoftResetEnd()
     {
-        this.gameObject.SetActive(true);
+        enabled = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         EventBus.Invoke<IStarCollected>(x => x.OnStarCollected());
-        this.gameObject.SetActive(false);
+        enabled = false;
     }
 
     private void Awake()
@@ -35,6 +33,6 @@ public class Star : MonoBehaviour, ILevelSoftResetEndHandler
 
     private void Unsubscribe()
     {
-        EventBus.Unsubscribe<ILevelSoftResetEndHandler>(this);        
+        EventBus.Unsubscribe<ILevelSoftResetEndHandler>(this);
     }
 }

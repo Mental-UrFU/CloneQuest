@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42008b58b13d88249a04d2fb6d97f9cd, type: 3}
   m_Name: DefaultPlayerConfig
   m_EditorClassIdentifier: 
-  _velocity: 10
+  _velocity: 12
   _acceleration: 70
-  _deceleration: 100
-  _airVelocity: 10
+  _deceleration: 200
+  _airVelocity: 12
   _airAcceleration: 80
   _airDeceleration: 50
   _jumpVelocity: 20

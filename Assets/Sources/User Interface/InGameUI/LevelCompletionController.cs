@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LevelCompletionController : MonoBehaviour, ILevelFinishHandler, ILevelLoadHandler, IStarCollected, ILevelSoftResetEndHandler
 {
@@ -20,7 +18,7 @@ public class LevelCompletionController : MonoBehaviour, ILevelFinishHandler, ILe
         if (levelCompletionScreen != null)
         {
             levelCompletionScreen.SetActive(true);
-            
+
             for (int i = 0; i < Math.Min(stars.Count, _gainedStars); i++)
             {
                 stars[i].SetActive(true);
@@ -31,7 +29,7 @@ public class LevelCompletionController : MonoBehaviour, ILevelFinishHandler, ILe
     public void OnLevelLoad(LevelContext levelContext)
     {
         _levelContext = levelContext;
-        _levelText.text = $"ÓÐÎÂÅÍÜ {int.Parse(_levelContext.Id) + 1}";        
+        _levelText.text = $"Ð£Ð ÐžÐ’Ð•ÐÐ¬ {_levelContext.Index + 1}";
         _gainedStars = 0;
     }
 
@@ -69,11 +67,5 @@ public class LevelCompletionController : MonoBehaviour, ILevelFinishHandler, ILe
         EventBus.Subscribe<ILevelLoadHandler>(this);
         EventBus.Subscribe<IStarCollected>(this);
         EventBus.Subscribe<ILevelSoftResetEndHandler>(this);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
