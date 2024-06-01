@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Star : MonoBehaviour, ILevelSoftResetEndHandler
 {
-    public static int CurrentLevelStarsCount = 0;
-    public static int TotalStarCount = 0;
+    public static int CurrentLevelStarsCount = 0; // TODO REMOVE >:(
+    public static int TotalStarCount = 0; // TODO REMOVE >:(
 
     public void OnSoftResetEnd()
     {

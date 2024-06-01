@@ -7,12 +7,14 @@ using static UnityEngine.InputSystem.InputAction;
 public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartHandler, ILevelReadyHandler, ILevelStartHandler, IPauseToggleHandler, ILevelReloadHandler,
     IBeforeLevelUnloadHandler
 {
-    [SerializeField] private GameObject _clonePrefab;
     [SerializeField] private int _maxClones;
+    [SerializeField] private GameObject _clonePrefab;
+    [SerializeField] private GameCanvasEvents _gameCanvas;
+
     private LevelContext _levelContext;
     private CloneSystem _cloneSystem;
     private PlayerActions _input;
-    private bool _pause;    
+    private bool _pause;
 
     public void OnLevelLoad(LevelContext levelContext)
     {
@@ -30,6 +32,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
         _input.Game.Restart.started += (ctx) => { OnLevelRestart(); };
         _input.Game.Esc.started += (ctx) => { TogglePause(); };
         _input.Game.Enable();
+        _gameCanvas.Init(_cloneSystem);
         EventBus.Invoke<ILevelReadyHandler>(obj => obj.OnLevelReady());
     }
 
@@ -76,6 +79,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
 
     private void Subscribe()
     {
+        EventBus.Subscribe<ILevelLoadHandler>(this);
         EventBus.Subscribe<ILevelReadyHandler>(this);
         EventBus.Subscribe<ILevelStartHandler>(this);
         EventBus.Subscribe<ILevelSoftResetStartHandler>(this);
@@ -95,8 +99,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
         EventBus.Unsubscribe<IBeforeLevelUnloadHandler>(this);
     }
 
-    private void Awake() => EventBus.Subscribe<ILevelLoadHandler>(this);
-
+    private void Awake() => Subscribe();
 
     private void Start()
     {
@@ -107,7 +110,6 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
             Debug.LogWarning($"LevelContext is null set {_levelContext.Id}");
         }
 #endif
-        Subscribe();
         PrepareLevel();
     }
     private void OnDestroy()

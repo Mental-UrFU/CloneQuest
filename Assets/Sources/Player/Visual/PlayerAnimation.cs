@@ -21,11 +21,11 @@ public class PlayerAnimation : MonoBehaviour, ILevelSoftResetEndHandler
     public void Kill()
     {
         const float time = 1f;
-        _sprite.DOFade(0f, time);
+        _sprite.DOFade(0f, time).SetLink(gameObject);
     }
     public void Relive(float time)
     {
-        _sprite.DOFade(1f, time);
+        _sprite.DOFade(1f, time).SetLink(gameObject);
     }
 
     #region rotation

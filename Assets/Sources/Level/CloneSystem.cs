@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,24 +7,26 @@ public class CloneSystem : ILevelSoftResetEndHandler, IBeforeLevelUnloadHandler
 {
     public enum ReadyState { Ready, Running, NotReady }
     public ReadyState State { get; private set; }
+    public int CloneCount => _clones.Count;
+    public int MaxClonesCount => _maxClones;
+
+    public event Action OnUpdate;
 
     private readonly RecordingPlayerInput _playerInput;
     private readonly GameObject _clonePrefab;
     private readonly Vector2 _initialPosition;
-    private static readonly List<(InputReplay input, GameObject gameObject)> _clones = new();
+    private readonly List<(InputReplay input, GameObject gameObject)> _clones = new();
 
     private InputRecord _newRecord = null;
-    private static int _maxClones = 0;
-    public static int CloneCount { get { return _clones.Count; } }
-    public static int MaxClonesCount { get { return _maxClones; } }
+    private readonly int _maxClones = 0;
 
-    public CloneSystem(RecordingPlayerInput playerInput, GameObject clonePrefab, Vector2 initialPosition, int maxClones = 4)
+    public CloneSystem(RecordingPlayerInput playerInput, GameObject clonePrefab, Vector2 initialPosition, int maxClones = int.MaxValue)
     {
         _playerInput = playerInput;
         _clonePrefab = clonePrefab;
         _initialPosition = initialPosition;
-        playerInput.Reset();
         _maxClones = maxClones;
+        _playerInput.Reset();
         _clones.Clear();
         Subscribe();
     }
@@ -41,9 +44,7 @@ public class CloneSystem : ILevelSoftResetEndHandler, IBeforeLevelUnloadHandler
 
     public void AddCloneAndRestart()
     {
-        if (_clones.Count >= _maxClones)
-            return;
-        if (State != ReadyState.Running) { return; }
+        if (State != ReadyState.Running || _clones.Count >= _maxClones) { return; }
         _newRecord = _playerInput.ResetAndReturn();
         Restart();
     }
@@ -58,14 +59,21 @@ public class CloneSystem : ILevelSoftResetEndHandler, IBeforeLevelUnloadHandler
 
     private void SpawnClone(InputRecord inputRecord)
     {
-        var clone = Object.Instantiate(_clonePrefab, (Vector3)_initialPosition, Quaternion.identity);
+        var clone = UnityEngine.Object.Instantiate(_clonePrefab, (Vector3)_initialPosition, Quaternion.identity);
         var cloneControls = clone.GetComponent<IControllable>();
+        var cloneRenderer = clone.GetComponentInChildren<SpriteRenderer>();
+        cloneRenderer.sortingOrder = CloneCount;
         _clones.Add((new InputReplay(cloneControls, inputRecord), clone));
     }
 
     public void OnSoftResetEnd()
     {
-        if (_newRecord != null) { SpawnClone(_newRecord); _newRecord = null; }
+        if (_newRecord != null)
+        {
+            SpawnClone(_newRecord);
+            _newRecord = null;
+            OnUpdate?.Invoke();
+        }
         State = ReadyState.Ready;
     }
 

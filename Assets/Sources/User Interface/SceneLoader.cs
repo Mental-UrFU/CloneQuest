@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoader : MonoBehaviour // TODO REMOVE
 {
     public static void LoadScene(string sceneName)
     {
