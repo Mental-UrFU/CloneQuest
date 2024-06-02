@@ -13,6 +13,8 @@ public class PlayerAnimation : MonoBehaviour, ILevelSoftResetEndHandler
     const string _airVelocityKey = "Air";
     const string _groundKey = "OnGround";
     const string _airKey = "OnAir";
+    const string _fold = "Fold";
+    const string _unfold = "Unfold";
 
     public void ChangeGroundState(bool onGround) => _animator.SetTrigger(onGround ? _groundKey : _airKey);
     public void ChangeMoveVelocity(float velocity) => _animator.SetFloat(_moveVelocityKey, MathF.Abs(velocity));
@@ -21,11 +23,21 @@ public class PlayerAnimation : MonoBehaviour, ILevelSoftResetEndHandler
     public void Kill()
     {
         const float time = 1f;
-        _sprite.DOFade(0f, time).SetLink(gameObject);
+        _animator.SetTrigger(_fold);
+        DOTween.Sequence()
+            .Join(transform.DOScale(0f, time))
+            .Join(_sprite.DOFade(0f, time))
+            .SetLink(gameObject)
+            .SetEase(Ease.InOutCubic);
     }
     public void Relive(float time)
     {
-        _sprite.DOFade(1f, time).SetLink(gameObject);
+        _animator.SetTrigger(_unfold);
+        DOTween.Sequence()
+            .Join(transform.DOScale(1f, time))
+            .Join(_sprite.DOFade(1f, time))
+            .SetLink(gameObject)
+            .SetEase(Ease.InOutCubic);
     }
 
     #region rotation
