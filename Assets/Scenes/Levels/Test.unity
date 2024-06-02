@@ -706,6 +706,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9732f2b85c96a6c4a870607e9475a83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1740850159 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 560124981641999004, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+  m_PrefabInstance: {fileID: 1907627241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2184cf8a9c5dee4b99c5fbfdce24899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1788534377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -822,6 +833,58 @@ PrefabInstance:
     - target: {fileID: 6307875421697334982, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311240189829131443, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: _onAnimationStart.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311240189829131443, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: _onAnimationStart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311240189829131443, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: _onAnimationStart.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311240189829131443, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: _onAnimationStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1740850159}
+    - target: {fileID: 7311240189829131443, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: _onAnimationStart.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1740850159}
+    - target: {fileID: 7311240189829131443, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: _onAnimationStart.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311240189829131443, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: _onAnimationStart.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311240189829131443, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: _onAnimationStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311240189829131443, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: _onAnimationStart.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311240189829131443, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: _onAnimationStart.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311240189829131443, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: _onAnimationStart.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311240189829131443, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: _onAnimationStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311240189829131443, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: _onAnimationStart.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

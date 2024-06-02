@@ -11,11 +11,11 @@ public class RigidbodySoftReset : MonoSoftResetListener
 
     public void SoftResetHandler(float duration)
     {
-        _rigidbody.bodyType = RigidbodyType2D.Static;
+        _rigidbody.simulated = false;
         DOTween.Sequence().SetLink(gameObject).SetEase(Ease.InOutCubic)
-            .Append(transform.DOMove(_initialPosition, duration))
+            .Join(transform.DOMove(_initialPosition, duration))
             .Join(transform.DORotate(new(0, 0, _initialRotation), duration))
-            .AppendCallback(() => _rigidbody.bodyType = RigidbodyType2D.Dynamic);
+            .AppendCallback(() => _rigidbody.simulated = true);
     }
 
     private new void Awake()

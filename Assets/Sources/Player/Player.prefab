@@ -441,7 +441,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 862341525986893101}
         m_TargetAssemblyTypeName: PlayerAnimation, Assembly-CSharp
-        m_MethodName: Relive
+        m_MethodName: ReliveOnReset
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

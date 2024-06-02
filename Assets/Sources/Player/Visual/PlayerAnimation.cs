@@ -1,8 +1,9 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
-public class PlayerAnimation : MonoBehaviour, ILevelSoftResetEndHandler
+public class PlayerAnimation : MonoBehaviour, ILevelSoftResetStartHandler
 {
     [SerializeField] private bool _facingRightDefault;
     [SerializeField] private Transform _flipAnchor;
@@ -33,11 +34,38 @@ public class PlayerAnimation : MonoBehaviour, ILevelSoftResetEndHandler
     public void Relive(float time)
     {
         _animator.SetTrigger(_unfold);
+        ReliveOnReset(time);
+    }
+    public void ReliveOnReset(float time)
+    {
         DOTween.Sequence()
             .Join(transform.DOScale(1f, time))
             .Join(_sprite.DOFade(1f, time))
             .SetLink(gameObject)
             .SetEase(Ease.InOutCubic);
+    }
+    public void OnSoftResetStart(float duration)
+    {
+        _animator.SetTrigger(_fold);
+        StartCoroutine(OnHalfSoftReset());
+        IEnumerator OnHalfSoftReset()
+        {
+            yield return new WaitForSeconds(duration / 2);
+            ResetRotation();
+            _animator.SetTrigger(_unfold);
+        }
+    }
+
+
+    private void Awake()
+    {
+        EventBus.Subscribe<ILevelSoftResetStartHandler>(this);
+        ResetRotation();
+    }
+
+    private void OnDisable()
+    {
+        EventBus.Unsubscribe<ILevelSoftResetStartHandler>(this);
     }
 
     #region rotation
@@ -70,17 +98,4 @@ public class PlayerAnimation : MonoBehaviour, ILevelSoftResetEndHandler
     }
 
     #endregion
-
-    public void OnSoftResetEnd() => ResetRotation();
-
-    private void Awake()
-    {
-        EventBus.Subscribe<ILevelSoftResetEndHandler>(this);
-        ResetRotation();
-    }
-
-    private void OnDisable()
-    {
-        EventBus.Unsubscribe<ILevelSoftResetEndHandler>(this);
-    }
 }
