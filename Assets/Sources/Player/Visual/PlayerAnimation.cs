@@ -17,13 +17,17 @@ public class PlayerAnimation : MonoBehaviour, ILevelSoftResetStartHandler
     const string _fold = "Fold";
     const string _unfold = "Unfold";
 
-    public void ChangeGroundState(bool onGround) => _animator.SetTrigger(onGround ? _groundKey : _airKey);
+    private bool _isDead = false;
+
     public void ChangeMoveVelocity(float velocity) => _animator.SetFloat(_moveVelocityKey, MathF.Abs(velocity));
     public void ChangeAirVelocity(float velocity) => _animator.SetFloat(_airVelocityKey, velocity);
     public void ChangeDirection(int direction) => UpdateDirection(direction);
+    public void ChangeGroundState(bool onGround) => _animator.SetTrigger(onGround ? _groundKey : _airKey);
+
     public void Kill()
     {
         const float time = 1f;
+        _isDead = true;
         _animator.SetTrigger(_fold);
         DOTween.Sequence()
             .Join(transform.DOScale(0f, time))
@@ -34,10 +38,11 @@ public class PlayerAnimation : MonoBehaviour, ILevelSoftResetStartHandler
     public void Relive(float time)
     {
         _animator.SetTrigger(_unfold);
-        ReliveOnReset(time);
+        ReliveTransforms(time);
     }
-    public void ReliveOnReset(float time)
+    private void ReliveTransforms(float time)
     {
+        _isDead = false;
         DOTween.Sequence()
             .Join(transform.DOScale(1f, time))
             .Join(_sprite.DOFade(1f, time))
@@ -46,7 +51,8 @@ public class PlayerAnimation : MonoBehaviour, ILevelSoftResetStartHandler
     }
     public void OnSoftResetStart(float duration)
     {
-        _animator.SetTrigger(_fold);
+        if (_isDead) { ReliveTransforms(duration); }
+        else { _animator.SetTrigger(_fold); }
         StartCoroutine(OnHalfSoftReset());
         IEnumerator OnHalfSoftReset()
         {
