@@ -533,4 +533,5 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _sprite: {fileID: 3886324902975805186}
-  _animationDuration: 2
+  _playerAnimator: {fileID: 5320970018787189941}
+  _animationDuration: 1
