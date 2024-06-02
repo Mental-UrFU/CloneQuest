@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1231721208849214101, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.5
       objectReference: {fileID: 0}
     - target: {fileID: 1231721208849214101, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 1231721208849214101, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
       propertyPath: m_LocalPosition.z
@@ -147,6 +147,10 @@ PrefabInstance:
     - target: {fileID: 6902474508039072446, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.r
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411711130034415796, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: _contactFilter.layerMask.m_Bits
+      value: 2689
       objectReference: {fileID: 0}
     - target: {fileID: 7667547649798557040, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
       propertyPath: m_Layer

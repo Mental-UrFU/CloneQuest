@@ -15,8 +15,8 @@ TagManager:
   - Platform
   - Clone
   - Block
-  - 
-  - 
+  - PlayerFilter
+  - CloneFilter
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3294545379
+    locked: 0
+  - name: Foreground
+    uniqueID: 2625499419
     locked: 0
