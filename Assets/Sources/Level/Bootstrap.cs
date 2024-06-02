@@ -12,6 +12,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
     [SerializeField] private GameCanvasEvents _gameCanvas;
 
     private LevelContext _levelContext;
+    private RecordingPlayerInput _playerInput;
     private CloneSystem _cloneSystem;
     private PlayerActions _input;
     private bool _pause;
@@ -25,15 +26,32 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
     private void PrepareLevel()
     {
         var playerControls = FindObjectOfType<PlayerControls>();
-        _cloneSystem = new CloneSystem(new(playerControls), _clonePrefab, playerControls.transform.position, _maxClones);
+        var playerFinisher = playerControls.GetComponent<LevelFinisher>();
+        _playerInput = new RecordingPlayerInput(playerControls);
+        _cloneSystem = new CloneSystem(_playerInput, _clonePrefab, playerControls.transform.position, _maxClones);
+
         _input = new PlayerActions();
         _input.Game.Clone.started += (ctx) => { _cloneSystem.AddCloneAndRestart(); };
         _input.Game.Undo.started += (ctx) => { _cloneSystem.Restart(); };
         _input.Game.Restart.started += (ctx) => { OnLevelRestart(); };
         _input.Game.Esc.started += (ctx) => { TogglePause(); };
         _input.Game.Enable();
+
         _gameCanvas.Init(_cloneSystem);
+        playerFinisher.OnAnimationStart.AddListener(DisableInput);
         EventBus.Invoke<ILevelReadyHandler>(obj => obj.OnLevelReady());
+    }
+
+    private void DisableInput()
+    {
+        _input.Disable();
+        _playerInput.Enable = false;
+    }
+
+    private void EnableInput()
+    {
+        _input.Enable();
+        _playerInput.Enable = true;
     }
 
     public void OnLevelReady()
