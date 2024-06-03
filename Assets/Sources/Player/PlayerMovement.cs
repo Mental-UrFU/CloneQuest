@@ -22,12 +22,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _frameVelocity;
     private Vector2 _platformVelocity;
 
-    void Start()
+    private void Init()
     {
         _wasGrounded = _groundSensor.IsHit;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         CheckCollisions();
         HandleVelocity();
@@ -161,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyVelocity() => _rigidbody.velocity = _frameVelocity;
 
+    private void OnEnable() { Init(); }
     private void OnDisable() { _rigidbody.velocity = Vector2.zero; }
 
 #if UNITY_EDITOR

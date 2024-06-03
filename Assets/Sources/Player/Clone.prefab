@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 266205145893600881, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: StartActions.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1175561053578682475, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -126,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6501958422349879318, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
       propertyPath: m_Volume
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6902474508039072446, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b

@@ -47,9 +47,10 @@ public class AudioControl : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    private void OnValidate()
-    {
-        if (_audioSource == null) { _audioSource = GetComponent<AudioSource>(); }
-    }
+    [ContextMenu("Enable Music")] private void EnableMusic() => Music = 1f;
+    [ContextMenu("Enable Sound")] private void EnableSound() => Sound = 1f;
+    [ContextMenu("Disable Music")] private void DisableMusic() => Music = 0f;
+    [ContextMenu("Disable Sound")] private void DisableSound() => Sound = 0f;
+    private void OnValidate() { if (_audioSource == null) { _audioSource = GetComponent<AudioSource>(); } }
 #endif
 }

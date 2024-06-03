@@ -413,6 +413,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1610331995039246356}
+        m_TargetAssemblyTypeName: PlayerSounds, Assembly-CSharp
+        m_MethodName: SoftReset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   EndActions:
     m_PersistentCalls:
       m_Calls:
@@ -484,6 +496,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1610331995039246356}
+        m_TargetAssemblyTypeName: PlayerSounds, Assembly-CSharp
+        m_MethodName: Kill
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -573,6 +597,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1610331995039246356}
+        m_TargetAssemblyTypeName: PlayerSounds, Assembly-CSharp
+        m_MethodName: PortalEntry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnAnimationEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -595,10 +631,14 @@ MonoBehaviour:
   _jump: {fileID: 8300000, guid: 91526c8fd172eee40b189aeb48047863, type: 3}
   _land: {fileID: 8300000, guid: 389c70aa066f7bc4f933ac886f3e868c, type: 3}
   _minLandingVelocity: 10
+  _death: {fileID: 8300000, guid: f4b89e916fdad16469d88fd0a58a7fe8, type: 3}
+  _portalEntry: {fileID: 8300000, guid: 02a783d6a01105f45bb956b31f78ed37, type: 3}
+  _softReset: {fileID: 8300000, guid: 73c3fac763aa6154da2b287d19e6e76b, type: 3}
   _steps:
   - {fileID: 8300000, guid: 70047d7ceb46f0b41b0f612fdb103797, type: 3}
   - {fileID: 8300000, guid: d4f2a93d6029cce4dba1ca7d7be8dbc5, type: 3}
   - {fileID: 8300000, guid: c26f2058eeca9f54b950c3bfe0164f36, type: 3}
+  - {fileID: 8300000, guid: 925b06186be75764798102fcbd702649, type: 3}
 --- !u!82 &6501958422349879318
 AudioSource:
   m_ObjectHideFlags: 0
