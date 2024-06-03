@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.InputSystem.InputAction;
@@ -119,6 +120,9 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
 
     private void Awake() => Subscribe();
 
+#if UNITY_EDITOR
+    [SerializeField] GameObject _audioControlsPrefab;
+#endif
     private void Start()
     {
 #if UNITY_EDITOR
@@ -127,6 +131,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
             _levelContext = new(0, Array.AsReadOnly(new string[] { SceneManager.GetActiveScene().name }), "");
             Debug.LogWarning($"LevelContext is null set {_levelContext.Id}");
         }
+        if (AudioControl.Instance == null) { Instantiate(_audioControlsPrefab); }
 #endif
         PrepareLevel();
     }
