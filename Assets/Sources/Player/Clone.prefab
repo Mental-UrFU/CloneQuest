@@ -124,6 +124,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 6501958422349879318, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6902474508039072446, guid: 61142b7f76441f84e8a4042b849fe456, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
       value: 0.2

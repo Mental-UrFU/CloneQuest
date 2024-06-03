@@ -16,9 +16,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private UnityEvent<float> _moveVelocity;
     [SerializeField] private UnityEvent<int> _moveDirection;
     [SerializeField] private UnityEvent<float> _airVelocity;
+    [SerializeField] private UnityEvent<float> _land;
+    [SerializeField] private UnityEvent _jump;
 
     private Vector2 _frameVelocity;
     private Vector2 _platformVelocity;
+
+    void Start()
+    {
+        _wasGrounded = _groundSensor.IsHit;
+    }
 
     void FixedUpdate()
     {
@@ -39,17 +46,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckCollisions()
     {
-        var hit = _groundSensor.Hit;
-        _isGrounded = hit.collider;
+        _isGrounded = _groundSensor.IsHit;
         if (_isGrounded)
         {
+            var hit = _groundSensor.Hit;
             _lastGroundTime = Time.fixedTime;
             _groundAngle = Vector2.Angle(_groundSensor.Hit.normal, Vector2.up);
             if (!_wasGrounded)
             {
+                _rigidbody.position -= new Vector2(0, hit.distance);
                 _wasGrounded = true;
                 _coyoteLocked = false;
                 _groundState.Invoke(_wasGrounded);
+                _land.Invoke(-_frameVelocity.y + _platformVelocity.y);
             }
         }
         else
@@ -126,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
         _jumpEarlyEnded = false;
         _frameVelocity.y = _config.JumpVelocity;
         _coyoteLocked = true;
+        _jump.Invoke();
     }
 
     #endregion

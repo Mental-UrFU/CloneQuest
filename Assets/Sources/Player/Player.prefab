@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 266205145893600881}
   - component: {fileID: 6772710712961368245}
   - component: {fileID: 7311240189829131443}
+  - component: {fileID: 1610331995039246356}
   - component: {fileID: 6501958422349879318}
   m_Layer: 6
   m_Name: Player
@@ -284,6 +285,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1610331995039246356}
+        m_TargetAssemblyTypeName: PlayerSounds, Assembly-CSharp
+        m_MethodName: Walk
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _moveDirection:
     m_PersistentCalls:
       m_Calls:
@@ -306,6 +319,36 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: PlayerAnimation, Assembly-CSharp
         m_MethodName: ChangeAirVelocity
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _land:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1610331995039246356}
+        m_TargetAssemblyTypeName: PlayerSounds, Assembly-CSharp
+        m_MethodName: Land
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _jump:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1610331995039246356}
+        m_TargetAssemblyTypeName: PlayerSounds, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -342,7 +385,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   _direction: {x: 0, y: -1}
-  _distance: 0.05
+  _distance: 0.02
 --- !u!114 &266205145893600881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,6 +579,26 @@ MonoBehaviour:
   _sprite: {fileID: 3886324902975805186}
   _playerAnimator: {fileID: 5320970018787189941}
   _animationDuration: 1
+--- !u!114 &1610331995039246356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307875421697334982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071133f34b98b5142be8aab97d33f526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 6501958422349879318}
+  _jump: {fileID: 8300000, guid: 91526c8fd172eee40b189aeb48047863, type: 3}
+  _land: {fileID: 8300000, guid: 389c70aa066f7bc4f933ac886f3e868c, type: 3}
+  _minLandingVelocity: 10
+  _steps:
+  - {fileID: 8300000, guid: 70047d7ceb46f0b41b0f612fdb103797, type: 3}
+  - {fileID: 8300000, guid: d4f2a93d6029cce4dba1ca7d7be8dbc5, type: 3}
+  - {fileID: 8300000, guid: c26f2058eeca9f54b950c3bfe0164f36, type: 3}
 --- !u!82 &6501958422349879318
 AudioSource:
   m_ObjectHideFlags: 0
