@@ -14,4 +14,6 @@ public class LevelContext
         ListIds = ids;
         FromId = fromId;
     }
+
+    public LevelContext Next => new(IsLast ? ListIds.Count : Index + 1, ListIds, FromId);
 }

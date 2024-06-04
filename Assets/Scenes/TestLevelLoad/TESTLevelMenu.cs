@@ -19,7 +19,6 @@ public class TESTLevelMenu : MonoBehaviour
     private void CreateButtons()
     {
         _buttons = _levelIds.Select(id => Instantiate(_buttonTemplate, _container)).ToArray();
-        LevelManager.levelsByName = _levelIds.ToList();
         for (var i = 0; i < _buttons.Length; i++)
         {
             if (!PersistentLevelData.LevelStars.ContainsKey(i))

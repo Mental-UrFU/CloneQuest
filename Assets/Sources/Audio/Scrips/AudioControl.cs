@@ -43,7 +43,7 @@ public class AudioControl : MonoBehaviour
     private void SetValue(string key, float normalizedVolume)
     {
         PlayerPrefs.SetFloat(key, normalizedVolume);
-        _audioMixer.SetFloat(key, ConvertVolume(normalizedVolume));
+        _audioMixer.SetFloat(key, normalizedVolume == 0f ? -80f : ConvertVolume(normalizedVolume));
     }
 
 #if UNITY_EDITOR

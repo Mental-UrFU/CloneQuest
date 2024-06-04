@@ -4,8 +4,6 @@ using UnityEngine.SceneManagement;
 
 public static class LevelManager
 {
-    static public List<string> levelsByName;// TODO REMOVE
-
     public static void Load(LevelContext levelContext)
     {
         SceneManager.sceneLoaded += OnLevelLoaded;
@@ -17,33 +15,9 @@ public static class LevelManager
             EventBus.Invoke<ILevelLoadHandler>((obj) => obj.OnLevelLoad(levelContext));
         }
     }
-    // TODO REMOVE \/
-    public static void LoadNext(LevelContext levelContext)
-    {
-        if (levelContext == null)
-        {
-            SceneLoader.LoadScene("MenuScene");
-            return;
-        }
-        var nextContext = new LevelContext(levelContext.Index + 1, levelContext.ListIds, levelContext.FromId);
-        PersistentLevelData.CurrentLevel += 1;
-        Load(nextContext);
-    }
 
-    public static void LoadNextLevel()
+    public static void LoadMenu(LevelContext levelContext)
     {
-        var occurence = levelsByName.FindIndex(x => x == SceneManager.GetActiveScene().name);
-        if (occurence == levelsByName.Count - 1)
-        {
-            SceneLoader.LoadScene("MenuScene");
-        }
-        else
-        {
-            var context = new LevelContext(occurence + 1, Array.AsReadOnly(levelsByName.ToArray()), SceneManager.GetActiveScene().name);
-            PersistentLevelData.CurrentLevel += 1;
-            LevelManager.Load(context);
-        }
+        SceneManager.LoadScene(levelContext.FromId);
     }
-    // TODO REMOVE /\
-
 }
