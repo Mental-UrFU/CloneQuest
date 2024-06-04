@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 251029380}
   - component: {fileID: 251029379}
   m_Layer: 5
-  m_Name: Language Switch
+  m_Name: Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1308,7 +1308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Clone Ball 76
+  m_text: Clone Quest
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 196513ea740339a4c9ad0ce0d78b467d, type: 2}
   m_sharedMaterial: {fileID: 5707122002093482281, guid: 196513ea740339a4c9ad0ce0d78b467d, type: 2}
@@ -1652,21 +1652,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _container: {fileID: 1694258029}
   _buttonTemplate: {fileID: 8664572699334268456, guid: 66fae24fee4dd1f43ae9b5cc752d09fd, type: 3}
-  _unlockAllLevels: 1
+  _unlockAllLevels: 0
   _levelIds:
-  - 0
   - 1
   - 2
   - 3
   - 4
-  - Test
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
   _levelAssets:
-  - {fileID: 102900000, guid: 423d1471e83c7d44c825723e75d266e7, type: 3}
   - {fileID: 102900000, guid: e8583f5eebeb5d749b7e068f90883175, type: 3}
   - {fileID: 102900000, guid: c868d5857b6a3084086bd54296fd1d27, type: 3}
   - {fileID: 102900000, guid: c86c34fbeef79174eaed1ea4c6d38504, type: 3}
+  - {fileID: 102900000, guid: 2b685421aa5cdb34aa481679a5c5a896, type: 3}
+  - {fileID: 102900000, guid: 262cba6281d2b5e4cb1e0501636df026, type: 3}
+  - {fileID: 102900000, guid: 575efd1873ab0f746be15c58a4d0d3fb, type: 3}
+  - {fileID: 102900000, guid: 423d1471e83c7d44c825723e75d266e7, type: 3}
   - {fileID: 102900000, guid: 49b6975b3eb843c4788db57826d1846c, type: 3}
-  - {fileID: 102900000, guid: 22736e11500d0ab4da9a60f9a70867e3, type: 3}
+  - {fileID: 102900000, guid: c751fa7e1678f3a41afacf17a3103348, type: 3}
+  - {fileID: 102900000, guid: dd6a76b327832214abb4c5ba08f0b19e, type: 3}
 --- !u!222 &1176252880
 CanvasRenderer:
   m_ObjectHideFlags: 0

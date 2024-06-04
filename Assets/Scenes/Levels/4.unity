@@ -1532,7 +1532,15 @@ MonoBehaviour:
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
       height: 1
-      spriteIndex: 0
+      spriteIndex: 1
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 0.060792923, y: -6.94, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
+      height: 1
+      spriteIndex: 1
       corner: 1
       m_CornerMode: 1
     - position: {x: 25, y: -6.94, z: 0}
