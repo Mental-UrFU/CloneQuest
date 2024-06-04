@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.InputSystem.InputAction;

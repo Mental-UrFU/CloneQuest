@@ -272,6 +272,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""88526644-1faf-4072-a25d-ed2e9cedbad0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""79328f10-eaa3-4463-b9d3-a11b7834a586"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
@@ -285,6 +296,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""3ea992f3-e860-420d-b663-d37fe35cbad3"",
                     ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Undo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae48bc96-f4cb-435d-86e2-1951f0ec983b"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
