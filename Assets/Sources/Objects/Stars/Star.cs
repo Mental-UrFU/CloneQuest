@@ -8,12 +8,14 @@ public class Star : MonoBehaviour, ILevelSoftResetEndHandler
     public void OnSoftResetEnd()
     {
         enabled = true;
+        gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         EventBus.Invoke<IStarCollected>(x => x.OnStarCollected());
         enabled = false;
+        gameObject.SetActive(false);
     }
 
     private void Awake()
@@ -36,3 +38,4 @@ public class Star : MonoBehaviour, ILevelSoftResetEndHandler
         EventBus.Unsubscribe<ILevelSoftResetEndHandler>(this);
     }
 }
+ 
