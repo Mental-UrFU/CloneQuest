@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
+    public bool IsOpened => gameObject.activeSelf;
+
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _soundButton;
     [SerializeField] private Button _musicButton;
@@ -30,22 +32,21 @@ public class PauseMenu : MonoBehaviour
             var enable = AudioControl.Instance.Music == 0f;
             AudioControl.Instance.Music = enable ? 1f : 0f;
         });
-        _restartButton.onClick.AddListener(() => EventBus.Invoke<ILevelReloadHandler>(obj => obj.OnLevelRestart()));
+        _restartButton.onClick.AddListener(() => EventBus.Invoke<ILevelRestartHandler>(obj => obj.OnLevelRestart()));
         _resumeButton.onClick.AddListener(Hide);
     }
 
     public void Show()
     {
         gameObject.SetActive(true);
-        DOTween.Sequence().SetEase(Ease.InOutCubic).SetUpdate(true)
+        DOTween.Sequence().SetLink(gameObject).SetEase(Ease.InOutCubic).SetUpdate(true)
             .Join(_overlay.DOFade(1f, _animationTime))
             .Join(DOVirtual.Float(-_panelButtonsSize, _panelSpacing, _animationTime, (value) => _panel.spacing = value));
-
     }
 
     public void Hide()
     {
-        DOTween.Sequence().SetEase(Ease.InOutCubic).SetUpdate(true)
+        DOTween.Sequence().SetLink(gameObject).SetEase(Ease.InOutCubic).SetUpdate(true)
             .Join(_overlay.DOFade(0f, _animationTime))
             .Join(DOVirtual.Float(_panelSpacing, -_panelButtonsSize, _animationTime, (value) => _panel.spacing = value))
             .AppendCallback(() => gameObject.SetActive(false));

@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.InputSystem.InputAction;
 
-public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartHandler, ILevelReadyHandler,
-                                        ILevelStartHandler, IPauseHandler, ILevelReloadHandler, ILevelMenuLoadHandler
+public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelReadyHandler, ILevelStartHandler,
+                                        ILevelSoftResetStartHandler, IPauseHandler, ILevelFinishHandler,
+                                        ILevelRestartHandler, ILevelMenuLoadHandler, ILevelLoadNextHandler
+
 {
     [SerializeField] private int _maxClones;
     [SerializeField] private GameObject _clonePrefab;
@@ -15,6 +17,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
     private RecordingPlayerInput _playerInput;
     private CloneSystem _cloneSystem;
     private PlayerActions _input;
+    private StarCounter _stars;
 
     public void OnLevelLoad(LevelContext levelContext)
     {
@@ -28,6 +31,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
         var playerFinisher = playerControls.GetComponent<LevelFinisher>();
         _playerInput = new RecordingPlayerInput(playerControls);
         _cloneSystem = new CloneSystem(_playerInput, _clonePrefab, playerControls.transform.position, _maxClones);
+        _stars = new();
 
         _input = new PlayerActions();
         _input.Game.Clone.started += (ctx) => { _cloneSystem.AddCloneAndRestart(); };
@@ -36,7 +40,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
         _input.Game.Esc.started += (ctx) => { _gameCanvas.ShowPauseMenu(); };
         _input.Game.Enable();
 
-        _gameCanvas.Init(_levelContext, _cloneSystem);
+        _gameCanvas.Init(_cloneSystem);
         playerFinisher.OnAnimationStart.AddListener(DisableInput);
         EventBus.Invoke<ILevelReadyHandler>(obj => obj.OnLevelReady());
     }
@@ -58,7 +62,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
         _input.Game.Move.actionMap.actionTriggered += OnAnyButtonPressed;
     }
 
-    private void OnAnyButtonPressed(CallbackContext ctx) => EventBus.Invoke<ILevelStartHandler>(obj => obj.OnLevelStart());
+    private void OnAnyButtonPressed(CallbackContext ctx) { EventBus.Invoke<ILevelStartHandler>(obj => obj.OnLevelStart()); }
 
     public void OnLevelStart()
     {
@@ -67,6 +71,12 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
     }
     public void OnLevelRestart() { LevelManager.Load(_levelContext); }
     public void OnLoadMenu() { LevelManager.LoadMenu(_levelContext); }
+    public void OnLevelFinish()
+    {
+        // TODO Save
+        _gameCanvas.ShowLevelCompleteMenu(_levelContext.Index + 1, _stars.Count);
+    }
+    public void OnLoadNext() { if (_levelContext.IsLast) { LevelManager.LoadMenu(_levelContext); } else { LevelManager.Load(_levelContext.Next); } }
 
     public void OnPause() { DisableInput(); }
     public void OnResume() { EnableInput(); }
@@ -89,8 +99,10 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
         EventBus.Subscribe<ILevelStartHandler>(this);
         EventBus.Subscribe<ILevelSoftResetStartHandler>(this);
         EventBus.Subscribe<IPauseHandler>(this);
-        EventBus.Subscribe<ILevelReloadHandler>(this);
+        EventBus.Subscribe<ILevelFinishHandler>(this);
+        EventBus.Subscribe<ILevelRestartHandler>(this);
         EventBus.Subscribe<ILevelMenuLoadHandler>(this);
+        EventBus.Subscribe<ILevelLoadNextHandler>(this);
     }
 
     private void Unsubscribe()
@@ -101,8 +113,10 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelSoftResetStartH
         EventBus.Unsubscribe<ILevelStartHandler>(this);
         EventBus.Unsubscribe<ILevelSoftResetStartHandler>(this);
         EventBus.Unsubscribe<IPauseHandler>(this);
-        EventBus.Unsubscribe<ILevelReloadHandler>(this);
+        EventBus.Unsubscribe<ILevelFinishHandler>(this);
+        EventBus.Unsubscribe<ILevelRestartHandler>(this);
         EventBus.Unsubscribe<ILevelMenuLoadHandler>(this);
+        EventBus.Unsubscribe<ILevelLoadNextHandler>(this);
     }
 
     private void Awake() => Subscribe();
