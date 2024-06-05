@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af7181f404f1447c0a7a17b3070b952b, type: 3}
-  m_Name: GroundDay
+  m_Name: GroundFilled
   m_EditorClassIdentifier: 
   m_Angles:
   - m_Start: -45
@@ -26,20 +26,17 @@ MonoBehaviour:
     m_Order: 0
     m_Sprites:
     - {fileID: 21300000, guid: 2b8a6ccea91abff48b3da1b0d88cc790, type: 3}
-    - {fileID: 21300000, guid: 24807879c5226d04099956567917945b, type: 3}
   - m_Start: -135
     m_End: -45
     m_Order: 0
     m_Sprites:
     - {fileID: 21300000, guid: 2b8a6ccea91abff48b3da1b0d88cc790, type: 3}
-    - {fileID: 21300000, guid: 24807879c5226d04099956567917945b, type: 3}
   - m_Start: 45
     m_End: 135
     m_Order: 0
     m_Sprites:
     - {fileID: 21300000, guid: 2b8a6ccea91abff48b3da1b0d88cc790, type: 3}
-    - {fileID: 21300000, guid: 24807879c5226d04099956567917945b, type: 3}
-  m_FillTexture: {fileID: 0}
+  m_FillTexture: {fileID: 2800000, guid: 2b8a6ccea91abff48b3da1b0d88cc790, type: 3}
   m_CornerSprites:
   - m_CornerType: 0
     m_Sprites:
