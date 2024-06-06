@@ -49,6 +49,7 @@ MonoBehaviour:
   _clonePrefab: {fileID: 8934834484401430384, guid: 7695b877eb1accb46a6d27879f89a2ab, type: 3}
   _gameCanvas: {fileID: 4602786761703583072}
   _audioControlsPrefab: {fileID: 1722364980702881668, guid: cec578408008ba54c9b1f9f167cc89d2, type: 3}
+  _sceneTransitionPrefab: {fileID: 1022368215700168592, guid: 456460984758ec24ca2fbf3a3738c5c9, type: 3}
 --- !u!1001 &4767649888149089574
 PrefabInstance:
   m_ObjectHideFlags: 0

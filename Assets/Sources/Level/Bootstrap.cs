@@ -80,7 +80,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelReadyHandler, I
     {
         LevelRepository.Get(_levelContext.Id, Save);
         void Save(LevelData prevValue)
-        {            
+        {
             if (prevValue.Passed && prevValue.Stars >= _stars.Count) { ShowLevelCompleteMenu(prevValue.Stars); }
             else { LevelRepository.Set(_levelContext.Id, new LevelData(_stars.Count), () => ShowLevelCompleteMenu(_stars.Count)); }
         }
@@ -134,6 +134,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelReadyHandler, I
 
 #if UNITY_EDITOR
     [SerializeField] GameObject _audioControlsPrefab;
+    [SerializeField] GameObject _sceneTransitionPrefab;
 #endif
     private void Start()
     {
@@ -144,6 +145,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelReadyHandler, I
             Debug.LogWarning($"LevelContext is null set {_levelContext.Id}");
         }
         if (AudioControl.Instance == null) { Instantiate(_audioControlsPrefab); }
+        if (SceneTransition.Instance == null) { Instantiate(_sceneTransitionPrefab); }
 #endif
         PrepareLevel();
     }
