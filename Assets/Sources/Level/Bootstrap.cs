@@ -60,9 +60,14 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelReadyHandler, I
     public void OnLevelReady()
     {
         _input.Game.Move.actionMap.actionTriggered += OnAnyButtonPressed;
+        _gameCanvas.ShowAnyButtonScreen();
     }
 
-    private void OnAnyButtonPressed(CallbackContext ctx) { EventBus.Invoke<ILevelStartHandler>(obj => obj.OnLevelStart()); }
+    private void OnAnyButtonPressed(CallbackContext ctx)
+    {
+        _gameCanvas.HideAnyButtonScreen();
+        EventBus.Invoke<ILevelStartHandler>(obj => obj.OnLevelStart());
+    }
 
     public void OnLevelStart()
     {
@@ -135,7 +140,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelReadyHandler, I
 #if UNITY_EDITOR
         if (_levelContext == null)
         {
-            _levelContext = new(0, Array.AsReadOnly(new string[] { SceneManager.GetActiveScene().name }), "");
+            _levelContext = new(0, Array.AsReadOnly(new string[] { SceneManager.GetActiveScene().name }), SceneManager.GetActiveScene().name);
             Debug.LogWarning($"LevelContext is null set {_levelContext.Id}");
         }
         if (AudioControl.Instance == null) { Instantiate(_audioControlsPrefab); }

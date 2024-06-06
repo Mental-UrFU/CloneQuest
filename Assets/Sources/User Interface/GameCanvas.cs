@@ -5,6 +5,7 @@ public class GameCanvas : MonoBehaviour
     [SerializeField] private CloneCounter _cloneCounter;
     [SerializeField] private PauseMenu _pauseMenu;
     [SerializeField] private LevelCompleteScreen _levelComplete;
+    [SerializeField] private PressAnyButtonScreen _pressAnyButtonScreen;
 
     public void Init(CloneSystem cloneSystem)
     {
@@ -18,4 +19,6 @@ public class GameCanvas : MonoBehaviour
         _levelComplete.Show(levelNumber, starCount);
     }
     public void ShowPauseMenu() { _pauseMenu.Show(); }
+    public void ShowAnyButtonScreen() { _pressAnyButtonScreen.Show(); }
+    public void HideAnyButtonScreen() { _pressAnyButtonScreen.Hide(); }
 }
