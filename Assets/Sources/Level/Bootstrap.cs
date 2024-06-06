@@ -73,9 +73,15 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelReadyHandler, I
     public void OnLoadMenu() { LevelManager.LoadMenu(_levelContext); }
     public void OnLevelFinish()
     {
-        // TODO Save
-        _gameCanvas.ShowLevelCompleteMenu(_levelContext.Index + 1, _stars.Count);
+        LevelRepository.Get(_levelContext.Id, Save);
+        void Save(LevelData prevValue)
+        {
+            if (prevValue.Stars >= _stars.Count) { ShowLevelCompleteMenu(prevValue.Stars); }
+            else { LevelRepository.Set(_levelContext.Id, new LevelData(_stars.Count), () => ShowLevelCompleteMenu(_stars.Count)); }
+        }
+        void ShowLevelCompleteMenu(int starCount) => _gameCanvas.ShowLevelCompleteMenu(_levelContext.Index + 1, starCount);
     }
+
     public void OnLoadNext() { if (_levelContext.IsLast) { LevelManager.LoadMenu(_levelContext); } else { LevelManager.Load(_levelContext.Next); } }
 
     public void OnPause() { DisableInput(); }
