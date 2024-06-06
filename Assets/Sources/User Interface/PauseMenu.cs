@@ -19,6 +19,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private float _panelButtonsSize;
     [SerializeField] private float _panelSpacing;
 
+    private PlayerActions _input;
+
     public void Start()
     {
         _mainMenuButton.onClick.AddListener(() => EventBus.Invoke<ILevelMenuLoadHandler>(obj => obj.OnLoadMenu()));
@@ -34,6 +36,8 @@ public class PauseMenu : MonoBehaviour
         });
         _restartButton.onClick.AddListener(() => EventBus.Invoke<ILevelRestartHandler>(obj => obj.OnLevelRestart()));
         _resumeButton.onClick.AddListener(Hide);
+        _input = new();
+        _input.Game.Esc.started += (ctx) => Hide();
     }
 
     public void Show()
@@ -41,7 +45,8 @@ public class PauseMenu : MonoBehaviour
         gameObject.SetActive(true);
         DOTween.Sequence().SetLink(gameObject).SetEase(Ease.InOutCubic).SetUpdate(true)
             .Join(_overlay.DOFade(1f, _animationTime))
-            .Join(DOVirtual.Float(-_panelButtonsSize, _panelSpacing, _animationTime, (value) => _panel.spacing = value));
+            .Join(DOVirtual.Float(-_panelButtonsSize, _panelSpacing, _animationTime, (value) => _panel.spacing = value))
+            .OnComplete(() => _input.Enable());
     }
 
     public void Hide()
@@ -49,7 +54,8 @@ public class PauseMenu : MonoBehaviour
         DOTween.Sequence().SetLink(gameObject).SetEase(Ease.InOutCubic).SetUpdate(true)
             .Join(_overlay.DOFade(0f, _animationTime))
             .Join(DOVirtual.Float(_panelSpacing, -_panelButtonsSize, _animationTime, (value) => _panel.spacing = value))
-            .AppendCallback(() => gameObject.SetActive(false));
+            .AppendCallback(() => gameObject.SetActive(false))
+            .OnComplete(() => _input.Disable());
     }
 
     private void OnEnable() => Pause.Set(true);
