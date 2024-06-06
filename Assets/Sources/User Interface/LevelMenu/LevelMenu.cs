@@ -23,8 +23,8 @@ public class LevelMenu : MonoBehaviour
         {
             var button = Instantiate(_buttonTemplate, _container);
             button.GetComponentInChildren<TMP_Text>().text = $"{index + 1}";
-            button.GetComponentInChildren<StarcounterSetter>().DisplayStarsCount(levelData.Stars);
-            if (!pass) { button.GetComponentInChildren<StarcounterSetter>().DisplayLock(); }
+            button.GetComponentInChildren<StarCounterSetter>().DisplayStarsCount(levelData.Stars);
+            if (!pass) { button.GetComponentInChildren<StarCounterSetter>().DisplayLock(); }
             else { button.onClick.AddListener(() => LevelManager.Load(CreateLevelContext(index))); }
             if (!levelData.Passed) { pass = false; }
         }

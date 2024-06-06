@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StarcounterSetter : MonoBehaviour
+public class StarCounterSetter : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> stars;
