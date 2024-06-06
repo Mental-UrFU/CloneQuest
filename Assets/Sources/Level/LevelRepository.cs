@@ -39,6 +39,6 @@ public static class LevelRepository
 
     private static LevelData ConvertStringToLevelData(string data)
     {
-        try { return LevelData.Deserialize(data); } catch { return new LevelData(); }
+        return LevelData.Deserialize(data);
     }
 }

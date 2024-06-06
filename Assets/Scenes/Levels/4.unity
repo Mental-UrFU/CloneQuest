@@ -1147,9 +1147,9 @@ MonoBehaviour:
       spriteIndex: 1
       corner: 1
       m_CornerMode: 1
-    - position: {x: 4.5, y: 0.75, z: 0}
-      leftTangent: {x: -0.84988594, y: 0.002836883, z: 0}
-      rightTangent: {x: 0.9256897, y: -0.0030899048, z: 0}
+    - position: {x: 4.269856, y: 0.7517605, z: 0.0000011236476}
+      leftTangent: {x: -0.8498857, y: 0.0028368235, z: 0.00000009158873}
+      rightTangent: {x: 0.92568827, y: -0.0030899048, z: 0.000000007835297}
       mode: 1
       height: 1
       spriteIndex: 0
@@ -1245,8 +1245,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: a999f0884ceb59d4380749d45d48856d, type: 3}
   - {fileID: 21300000, guid: a999f0884ceb59d4380749d45d48856d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 0.37506127, y: 3.25, z: 0}
-    m_Extent: {x: 4.126607, y: 3, z: 0}
+    m_Center: {x: 0.2599895, y: 3.25, z: 0}
+    m_Extent: {x: 4.011535, y: 3, z: 0}
   m_SpriteSortPoint: 0
 --- !u!60 &565408868
 PolygonCollider2D:
@@ -1292,7 +1292,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -2.7421129, y: 1.3060088}
+    - - {x: 4.2702456, y: 1.2493896}
+      - {x: -2.7421129, y: 1.3060088}
       - {x: -2.762372, y: 6.2195196}
       - {x: -3.5553405, y: 6.2281036}
       - {x: -3.7576284, y: 6.2191257}
@@ -1302,8 +1303,9 @@ PolygonCollider2D:
       - {x: -3.6795814, y: 1.2262039}
       - {x: -3.4816074, y: 0.65784717}
       - {x: -3.0916173, y: 0.20034802}
-      - {x: 4.3160644, y: 0.23659086}
-      - {x: 4.5610743, y: 1.2366905}
+      - {x: 4.265941, y: 0.26145494}
+      - {x: 4.2665176, y: 0.7540236}
+      - {x: 4.26974, y: 1.2467195}
   m_UseDelaunayMesh: 0
 --- !u!1001 &1095951583
 PrefabInstance:
@@ -1938,8 +1940,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9196825163522911520, guid: a76c78c18e32a4c47a5e125d8c6fc007, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6223737
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196825163522911520, guid: a76c78c18e32a4c47a5e125d8c6fc007, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7647058
+      value: 1.2406385
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196825163522911520, guid: a76c78c18e32a4c47a5e125d8c6fc007, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6223737
       objectReference: {fileID: 0}
     - target: {fileID: 9196825163522911520, guid: a76c78c18e32a4c47a5e125d8c6fc007, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2143,16 +2153,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9196825163522911520, guid: a76c78c18e32a4c47a5e125d8c6fc007, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6223737
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196825163522911520, guid: a76c78c18e32a4c47a5e125d8c6fc007, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7647058
+      value: 1.2406385
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196825163522911520, guid: a76c78c18e32a4c47a5e125d8c6fc007, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6223737
       objectReference: {fileID: 0}
     - target: {fileID: 9196825163522911520, guid: a76c78c18e32a4c47a5e125d8c6fc007, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.568627
+      value: 1.569
       objectReference: {fileID: 0}
     - target: {fileID: 9196825163522911520, guid: a76c78c18e32a4c47a5e125d8c6fc007, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2499999
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 9196825163522911520, guid: a76c78c18e32a4c47a5e125d8c6fc007, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2261,7 +2279,7 @@ MonoBehaviour:
       spriteIndex: 1
       corner: 1
       m_CornerMode: 1
-    - position: {x: 4.5, y: 0.75, z: 0}
+    - position: {x: 4.32, y: 0.75, z: 0}
       leftTangent: {x: -0.84988594, y: 0.002836883, z: 0}
       rightTangent: {x: 0.9256897, y: -0.0030899048, z: 0}
       mode: 1
@@ -2359,8 +2377,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: a999f0884ceb59d4380749d45d48856d, type: 3}
   - {fileID: 21300000, guid: a999f0884ceb59d4380749d45d48856d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 0.37506127, y: 3.25, z: 0}
-    m_Extent: {x: 4.126607, y: 3, z: 0}
+    m_Center: {x: 0.2850616, y: 3.25, z: 0}
+    m_Extent: {x: 4.0366073, y: 3, z: 0}
   m_SpriteSortPoint: 0
 --- !u!60 &1933598714
 PolygonCollider2D:
@@ -2406,7 +2424,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -2.5133152, y: 1.2682967}
+    - - {x: -2.666421, y: 1.2682967}
       - {x: -2.7937899, y: 6.341442}
       - {x: -3.7681193, y: 6.167143}
       - {x: -3.6956718, y: 2.713849}
@@ -2416,8 +2434,9 @@ PolygonCollider2D:
       - {x: -3.4041429, y: 0.73851305}
       - {x: -3.4198267, y: 0.65784717}
       - {x: -3.0609612, y: 0.3222705}
-      - {x: 4.479742, y: 0.28774548}
-      - {x: 4.469515, y: 1.2366903}
+      - {x: 4.307498, y: 0.23989975}
+      - {x: 4.3116055, y: 0.7274686}
+      - {x: 4.3259783, y: 1.274967}
   m_UseDelaunayMesh: 0
 --- !u!20 &171218301405918503 stripped
 Camera:

@@ -80,8 +80,8 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelReadyHandler, I
     {
         LevelRepository.Get(_levelContext.Id, Save);
         void Save(LevelData prevValue)
-        {
-            if (prevValue.Stars >= _stars.Count) { ShowLevelCompleteMenu(prevValue.Stars); }
+        {            
+            if (prevValue.Passed && prevValue.Stars >= _stars.Count) { ShowLevelCompleteMenu(prevValue.Stars); }
             else { LevelRepository.Set(_levelContext.Id, new LevelData(_stars.Count), () => ShowLevelCompleteMenu(_stars.Count)); }
         }
         void ShowLevelCompleteMenu(int starCount) => _gameCanvas.ShowLevelCompleteMenu(_levelContext.Index + 1, starCount);
