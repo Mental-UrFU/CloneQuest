@@ -10,6 +10,8 @@
                 height: 100%;
                 padding: 0px;
                 margin: 0px;
+                display: flex;
+                background: #242424
             }
             .fullscreen {
 #if OVERLAY_BACKGROUND_COLOR && OVERLAY_BACKGROUND_COLOR !== '-' && OVERLAY_BACKGROUND_COLOR !== ' '
@@ -38,14 +40,16 @@
                 align-items: center;
             }
             #icon {
-                max-width: 120px;
+                max-width: 240px;
                 border-radius: 10px;
-                margin-bottom: 20px;
+                margin-bottom: 50px;
+                border-radius: 100%;
+                box-shadow: 0 0 10px 2px #111111;
             }
             #progress-bar {
-                border-radius: 5px;
+                border-radius: 10px;
                 width: 90%;
-                max-width: 250px;
+                max-width: 400px;
                 height: 20px;
 #if PROGRESS_BAR_BACKGROUND_COLOR && PROGRESS_BAR_BACKGROUND_COLOR !== '-' && PROGRESS_BAR_BACKGROUND_COLOR !== ' '
                 background: {{{ PROGRESS_BAR_BACKGROUND_COLOR }}};
@@ -64,10 +68,21 @@
                 background: #FF9A00;
 #endif
             }
+            .canvas{
+                margin: auto;
+                width: 100vw;
+                height: 56.25vw;
+            }
+            @media screen and (min-aspect-ratio: 16/9) {
+                .canvas {
+                    width: 177.77vh;
+                    height: 100vh;
+                }
+            }
         </style>
     </head>
     <body>
-        <canvas id="canvas" class="fullscreen"></canvas>
+        <canvas id="canvas" class="canvas"></canvas>
         <div id="banner-container" style="display: none"></div>
         <div id="loading-overlay" class="fullscreen">
             <img id="icon" src="./icon.png" />
@@ -197,8 +212,10 @@
                             onUnityLoadingProgressChanged)
                             .then((unityInstance) => {
                                 window.unityInstance = unityInstance
-                                loadingOverlay.remove()
-                                canvas.focus()
+                                setTimeout(() => {
+                                    loadingOverlay.remove();
+                                    canvas.focus();
+                                }, 2100)
                             })
                             .catch((error) => {
                                 console.error(error)
