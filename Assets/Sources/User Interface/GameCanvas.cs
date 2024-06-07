@@ -21,4 +21,11 @@ public class GameCanvas : MonoBehaviour
     public void ShowPauseMenu() { _pauseMenu.Show(); }
     public void ShowAnyButtonScreen() { _pressAnyButtonScreen.Show(); }
     public void HideAnyButtonScreen() { _pressAnyButtonScreen.Hide(); }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        GetComponent<Canvas>().worldCamera = Camera.main;
+    }
+#endif
 }

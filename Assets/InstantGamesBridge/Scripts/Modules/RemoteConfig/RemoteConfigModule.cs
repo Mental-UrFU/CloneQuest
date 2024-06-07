@@ -67,7 +67,7 @@ namespace InstantGamesBridge.Modules.RemoteConfig
                 var container = JsonUtility.FromJson<ValuesContainer>(result.SurroundWithKey("values").FixBooleans().SurroundWithBraces());
                 values = container.values;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 values = new List<RemoteConfigValue>();
             }

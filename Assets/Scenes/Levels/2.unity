@@ -1643,6 +1643,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 633215623146930960, guid: e987a37002dd6524998252e659cd0214, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.299999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1541824909123008646, guid: e987a37002dd6524998252e659cd0214, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 171218301405918503}
+    - target: {fileID: 1541824909123008646, guid: e987a37002dd6524998252e659cd0214, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1541824909123008646, guid: e987a37002dd6524998252e659cd0214, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1541824909123008646, guid: e987a37002dd6524998252e659cd0214, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1541824909123008646, guid: e987a37002dd6524998252e659cd0214, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1669467877
+      objectReference: {fileID: 0}
     - target: {fileID: 2270223258126137045, guid: e987a37002dd6524998252e659cd0214, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1683,13 +1707,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2423832389752890641, guid: e987a37002dd6524998252e659cd0214, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.299995
+      objectReference: {fileID: 0}
     - target: {fileID: 4951524728897183695, guid: e987a37002dd6524998252e659cd0214, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 5034502715889566753, guid: e987a37002dd6524998252e659cd0214, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7.6000004
+      objectReference: {fileID: 0}
     - target: {fileID: 5785109683191000783, guid: e987a37002dd6524998252e659cd0214, type: 3}
       propertyPath: m_Name
       value: Functional
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903848936737688593, guid: e987a37002dd6524998252e659cd0214, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.299995
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248066269511633221, guid: e987a37002dd6524998252e659cd0214, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7.6000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004539123925215079, guid: e987a37002dd6524998252e659cd0214, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
