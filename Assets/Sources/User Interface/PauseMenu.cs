@@ -28,11 +28,14 @@ public class PauseMenu : MonoBehaviour
         {
             var enable = AudioControl.Instance.Sound == 0f;
             AudioControl.Instance.Sound = enable ? 1f : 0f;
+            _soundButton.GetComponent<SoundButton>().OnSoundToggle();
         });
+        
         _musicButton.onClick.AddListener(() =>
         {
             var enable = AudioControl.Instance.Music == 0f;
             AudioControl.Instance.Music = enable ? 1f : 0f;
+            _musicButton.GetComponent<MusicButton>().OnMusicToggle();
         });
         _restartButton.onClick.AddListener(() => EventBus.Invoke<ILevelRestartHandler>(obj => obj.OnLevelRestart()));
         _resumeButton.onClick.AddListener(Hide);
@@ -43,6 +46,8 @@ public class PauseMenu : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
+        _soundButton.GetComponent<SoundButton>().OnSoundToggle();
+        _musicButton.GetComponent<MusicButton>().OnMusicToggle();
         DOTween.Sequence().SetLink(gameObject).SetEase(Ease.InOutCubic).SetUpdate(true)
             .Join(_overlay.DOFade(1f, _animationTime))
             .Join(DOVirtual.Float(-_panelButtonsSize, _panelSpacing, _animationTime, (value) => _panel.spacing = value))
