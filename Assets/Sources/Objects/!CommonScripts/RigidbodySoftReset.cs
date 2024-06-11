@@ -12,15 +12,20 @@ public class RigidbodySoftReset : MonoSoftResetListener
     public void SoftResetHandler(float duration)
     {
         _rigidbody.simulated = false;
-        DOTween.Sequence().SetLink(gameObject).SetEase(Ease.InOutCubic)
+        DOTween.Sequence().SetLink(_rigidbody.gameObject).SetEase(Ease.Linear)
             .Join(transform.DOMove(_initialPosition, duration))
             .Join(transform.DORotate(new(0, 0, _initialRotation), duration))
-            .AppendCallback(() => _rigidbody.simulated = true);
+            .OnKill(() =>
+            {
+                _rigidbody.position = _initialPosition;
+                _rigidbody.rotation = _initialRotation;
+                _rigidbody.simulated = true;
+            });
     }
 
     private new void Awake()
     {
-        (_initialPosition, _initialRotation) = (_rigidbody.position, _rigidbody.rotation);
+        (_initialPosition, _initialRotation) = (_rigidbody.position, _rigidbody.rotation);;
         StartActions.AddListener(SoftResetHandler);
         base.Awake();
     }
@@ -28,7 +33,7 @@ public class RigidbodySoftReset : MonoSoftResetListener
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        if (_rigidbody == null) { _rigidbody = GetComponent<Rigidbody2D>(); }
+        if (_rigidbody == null) { _rigidbody = GetComponent<Rigidbody2D>(); }        
     }
 #endif
 }
