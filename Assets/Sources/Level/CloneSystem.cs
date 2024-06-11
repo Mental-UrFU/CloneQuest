@@ -52,7 +52,7 @@ public class CloneSystem : ILevelSoftResetEndHandler, IBeforeLevelUnloadHandler
     public void Restart()
     {
         State = ReadyState.NotReady;
-        _playerInput.Enable = false;
+        _playerInput.Reset();
         _clones.ForEach(clone => clone.input.Reset());
         EventBus.Invoke<ILevelSoftResetStartHandler>(obj => obj.OnSoftResetStart(1f));
     }
