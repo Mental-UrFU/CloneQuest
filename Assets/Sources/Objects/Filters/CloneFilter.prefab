@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4416401460013800335, guid: dfb8553d9946b2146ae8799158918252, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 0
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 4416401460013800335, guid: dfb8553d9946b2146ae8799158918252, type: 3}
       propertyPath: m_SpriteTilingProperty.drawMode
