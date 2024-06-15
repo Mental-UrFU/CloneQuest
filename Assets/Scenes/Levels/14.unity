@@ -2657,6 +2657,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Functional
       objectReference: {fileID: 0}
+    - target: {fileID: 8870624444178051988, guid: e987a37002dd6524998252e659cd0214, type: 3}
+      propertyPath: _maxClones
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
