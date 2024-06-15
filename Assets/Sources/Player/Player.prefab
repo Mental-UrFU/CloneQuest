@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27e78b515497c4468105c8d08aec816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _facingRightDefault: 1
+  _facingRightDefault: 0
   _flipAnchor: {fileID: 2935159657823499847}
   _sprite: {fileID: 3886324902975805186}
   _animator: {fileID: 5320970018787189941}
@@ -379,7 +379,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 1665
+      m_Bits: 3713
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
