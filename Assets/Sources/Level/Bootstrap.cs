@@ -28,9 +28,10 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelReadyHandler, I
     private void PrepareLevel()
     {
         var playerControls = FindObjectOfType<PlayerControls>();
+        var playerAnimation = playerControls.GetComponentInChildren<PlayerAnimation>();
         var playerFinisher = playerControls.GetComponent<LevelFinisher>();
         _playerInput = new RecordingPlayerInput(playerControls);
-        _cloneSystem = new CloneSystem(_playerInput, _clonePrefab, playerControls.transform.position, _maxClones);
+        _cloneSystem = new CloneSystem(_playerInput, _clonePrefab, playerControls.transform.position, playerAnimation.IsFacingRightDefault, _maxClones);
         _stars = new();
 
         _input = new PlayerActions();
