@@ -15,16 +15,18 @@ public class CloneSystem : ILevelSoftResetEndHandler, IBeforeLevelUnloadHandler
     private readonly RecordingPlayerInput _playerInput;
     private readonly GameObject _clonePrefab;
     private readonly Vector2 _initialPosition;
+    private readonly bool _isFacingRightDefault;
     private readonly List<(InputReplay input, GameObject gameObject)> _clones = new();
 
     private InputRecord _newRecord = null;
     private readonly int _maxClones = 0;
 
-    public CloneSystem(RecordingPlayerInput playerInput, GameObject clonePrefab, Vector2 initialPosition, int maxClones = int.MaxValue)
+    public CloneSystem(RecordingPlayerInput playerInput, GameObject clonePrefab, Vector2 initialPosition, bool isFacingRightDefault, int maxClones = int.MaxValue)
     {
         _playerInput = playerInput;
         _clonePrefab = clonePrefab;
         _initialPosition = initialPosition;
+        _isFacingRightDefault = isFacingRightDefault;
         _maxClones = maxClones;
         _playerInput.Reset();
         _clones.Clear();
@@ -62,6 +64,8 @@ public class CloneSystem : ILevelSoftResetEndHandler, IBeforeLevelUnloadHandler
         var clone = UnityEngine.Object.Instantiate(_clonePrefab, (Vector3)_initialPosition, Quaternion.identity);
         var cloneControls = clone.GetComponent<IControllable>();
         var cloneRenderer = clone.GetComponentInChildren<SpriteRenderer>();
+        var cloneAnimation = clone.GetComponentInChildren<PlayerAnimation>();
+        cloneAnimation.IsFacingRightDefault = _isFacingRightDefault;
         cloneRenderer.sortingOrder = CloneCount;
         _clones.Add((new InputReplay(cloneControls, inputRecord), clone));
     }

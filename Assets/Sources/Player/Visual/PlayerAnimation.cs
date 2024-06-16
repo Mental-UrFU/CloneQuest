@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour, ILevelSoftResetStartHandler
 {
+    public bool IsFacingRightDefault { get => _facingRightDefault; set => _facingRightDefault = value; }
+
     [SerializeField] private bool _facingRightDefault;
     [SerializeField] private Transform _flipAnchor;
     [SerializeField] private SpriteRenderer _sprite;
@@ -64,8 +66,7 @@ public class PlayerAnimation : MonoBehaviour, ILevelSoftResetStartHandler
         }
     }
 
-
-    private void Awake()
+    private void Start()
     {
         EventBus.Subscribe<ILevelSoftResetStartHandler>(this);
         ResetRotation();
@@ -106,4 +107,11 @@ public class PlayerAnimation : MonoBehaviour, ILevelSoftResetStartHandler
     }
 
     #endregion
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        ResetRotation();
+    }
+#endif
 }
