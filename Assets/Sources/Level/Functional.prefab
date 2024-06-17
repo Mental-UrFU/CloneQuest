@@ -48,6 +48,7 @@ MonoBehaviour:
   _maxClones: 4
   _clonePrefab: {fileID: 8934834484401430384, guid: 7695b877eb1accb46a6d27879f89a2ab, type: 3}
   _gameCanvas: {fileID: 4602786761703583072}
+  _uiModule: {fileID: 299190126259119437}
   _audioControlsPrefab: {fileID: 1722364980702881668, guid: cec578408008ba54c9b1f9f167cc89d2, type: 3}
   _sceneTransitionPrefab: {fileID: 1022368215700168592, guid: 456460984758ec24ca2fbf3a3738c5c9, type: 3}
 --- !u!1001 &4767649888149089574
@@ -355,6 +356,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e687b594fe3445247b33e5ba82f737ea, type: 3}
+--- !u!114 &299190126259119437 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5047681435250722923, guid: e687b594fe3445247b33e5ba82f737ea, type: 3}
+  m_PrefabInstance: {fileID: 4767649888149089574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2169641352252944489 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6644503800600485199, guid: e687b594fe3445247b33e5ba82f737ea, type: 3}

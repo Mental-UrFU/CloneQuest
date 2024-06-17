@@ -15,10 +15,10 @@ public class GameCanvas : MonoBehaviour
 
     public void ShowLevelCompleteMenu(int levelNumber, int starCount)
     {
-        if (_pauseMenu.IsOpened) { _pauseMenu.Hide(); }
+        if (_pauseMenu != null && _pauseMenu.IsOpened) { _pauseMenu.Hide(); }
         _levelComplete.Show(levelNumber, starCount);
     }
-    public void ShowPauseMenu() { _pauseMenu.Show(); }
+    public void ShowPauseMenu() { if(_pauseMenu != null) _pauseMenu.Show(); }
     public void ShowAnyButtonScreen() { _pressAnyButtonScreen.Show(); }
     public void HideAnyButtonScreen() { _pressAnyButtonScreen.Hide(); }
 }
