@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.InputSystem.UI;
 
 public class LevelMenu : MonoBehaviour
 {
     [SerializeField] RectTransform _container;
     [SerializeField] Button _buttonTemplate;
     [SerializeField] bool _unlockAllLevels;
+    [SerializeField] InputSystemUIInputModule _uiModule;
     [HideInInspector][SerializeField] string[] _levelIds;
 
     private void CreateButtons()
@@ -25,7 +27,7 @@ public class LevelMenu : MonoBehaviour
             button.GetComponentInChildren<TMP_Text>().text = $"{index + 1}";
             button.GetComponentInChildren<StarCounterSetter>().DisplayStarsCount(levelData.Stars);
             if (!pass && !_unlockAllLevels) { button.GetComponentInChildren<StarCounterSetter>().DisplayLock(); }
-            else { button.onClick.AddListener(() => LevelManager.Load(CreateLevelContext(index))); }
+            else { button.onClick.AddListener(() => {_uiModule.enabled = false; LevelManager.Load(CreateLevelContext(index));});}
             if (!levelData.Passed) { pass = false; }
         }
     }

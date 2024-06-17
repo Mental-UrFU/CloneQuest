@@ -62,11 +62,11 @@ public class VolumeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerEnter(PointerEventData eventData)
     {
         _container.DOKill();
-        _container.DOSizeDelta(new Vector2(_width, _container.sizeDelta.y), _animationDuration).SetEase(Ease.InOutCubic).SetUpdate(true);
+        _container.DOSizeDelta(new Vector2(_width, _container.sizeDelta.y), _animationDuration).SetLink(_container.gameObject).SetEase(Ease.InOutCubic).SetUpdate(true);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         _container.DOKill();
-        _container.DOSizeDelta(new Vector2(_collapsedWidth, _container.sizeDelta.y), _animationDuration).SetEase(Ease.InOutCubic).SetUpdate(true);
+        _container.DOSizeDelta(new Vector2(_collapsedWidth, _container.sizeDelta.y), _animationDuration).SetLink(_container.gameObject).SetEase(Ease.InOutCubic).SetUpdate(true);
     }
 }

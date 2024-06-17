@@ -24,7 +24,10 @@ public class PauseMenu : MonoBehaviour
     public void Start()
     {
         _mainMenuButton.onClick.AddListener(() => EventBus.Invoke<ILevelMenuLoadHandler>(obj => obj.OnLoadMenu()));
-        _restartButton.onClick.AddListener(() => EventBus.Invoke<ILevelRestartHandler>(obj => obj.OnLevelRestart()));
+        _restartButton.onClick.AddListener(() => 
+        {
+            EventBus.Invoke<ILevelRestartHandler>(obj => obj.OnLevelRestart());          
+        });
         _resumeButton.onClick.AddListener(Hide);
         _input = new();
         _input.Game.Esc.started += (ctx) => Hide();
@@ -41,13 +44,19 @@ public class PauseMenu : MonoBehaviour
 
     public void Hide()
     {
+        _input.Disable();
+        _resumeButton.interactable = false;
         DOTween.Sequence().SetLink(gameObject).SetEase(Ease.InOutCubic).SetUpdate(true)
             .Join(_overlay.DOFade(0f, _animationTime))
             .Join(DOVirtual.Float(_panelSpacing, -_panelButtonsSize, _animationTime, (value) => _panel.spacing = value))
-            .AppendCallback(() => gameObject.SetActive(false))
-            .OnComplete(() => _input.Disable());
+            .OnComplete(() => {gameObject.SetActive(false); _resumeButton.interactable = true;});
     }
 
+    private void OnDestroy()
+    {        
+        DOTween.KillAll(true);
+        _input.Dispose();
+    }
     private void OnEnable() => Pause.Set(true);
     private void OnDisable() => Pause.Set(false);
 }

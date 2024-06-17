@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -12,6 +13,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelReadyHandler, I
     [SerializeField] private int _maxClones;
     [SerializeField] private GameObject _clonePrefab;
     [SerializeField] private GameCanvas _gameCanvas;
+    [SerializeField] InputSystemUIInputModule _uiModule;
 
     private LevelContext _levelContext;
     private RecordingPlayerInput _playerInput;
@@ -75,8 +77,8 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelReadyHandler, I
         _input.Game.Move.actionMap.actionTriggered -= OnAnyButtonPressed;
         _cloneSystem.Start();
     }
-    public void OnLevelRestart() { DisableInput(); LevelManager.Load(_levelContext); }
-    public void OnLoadMenu() { LevelManager.LoadMenu(_levelContext); }
+    public void OnLevelRestart() { _uiModule.enabled = false; DisableInput(); LevelManager.Load(_levelContext); }
+    public void OnLoadMenu() { _uiModule.enabled = false; LevelManager.LoadMenu(_levelContext); }
     public void OnLevelFinish()
     {
         LevelRepository.Get(_levelContext.Id, Save);
@@ -88,7 +90,7 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelReadyHandler, I
         void ShowLevelCompleteMenu(int starCount) => _gameCanvas.ShowLevelCompleteMenu(_levelContext.Index + 1, starCount);
     }
 
-    public void OnLoadNext() { if (_levelContext.IsLast) { LevelManager.LoadMenu(_levelContext); } else { LevelManager.Load(_levelContext.Next); } }
+    public void OnLoadNext() { _uiModule.enabled = false; if (_levelContext.IsLast) {LevelManager.LoadMenu(_levelContext); } else { LevelManager.Load(_levelContext.Next); } }
 
     public void OnPause() { DisableInput(); }
     public void OnResume() { EnableInput(); }
@@ -119,7 +121,6 @@ public class Bootstrap : MonoBehaviour, ILevelLoadHandler, ILevelReadyHandler, I
 
     private void Unsubscribe()
     {
-        _input.Dispose();
         EventBus.Unsubscribe<ILevelLoadHandler>(this);
         EventBus.Unsubscribe<ILevelReadyHandler>(this);
         EventBus.Unsubscribe<ILevelStartHandler>(this);
